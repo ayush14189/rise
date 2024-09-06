@@ -6,9 +6,11 @@ import {
 	HiOutlineDocumentText,
 	HiOutlineAnnotation,
 	HiOutlineQuestionMarkCircle,
-	HiOutlineCog
+	HiOutlineCog,
+	HiShieldCheck,
+	HiOutlineCurrencyRupee
 } from 'react-icons/hi'
-
+import { GrCertificate } from "react-icons/gr";
 export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'dashboard',
@@ -17,33 +19,33 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		icon: <HiOutlineViewGrid />
 	},
 	{
-		key: 'products',
-		label: 'Products',
-		path: 'products',
+		key: 'EditStartup',
+		label: 'View/Edit Startup',
+		path: 'EditStartup',
 		icon: <HiOutlineCube />
 	},
 	{
 		key: 'IprForm',
 		label: 'IPR Form',
 		path: 'IprForm',
-		icon: <HiOutlineShoppingCart />
+		icon: <HiShieldCheck />
 	},
 	{
-		key: 'customers',
-		label: 'Customers',
-		path: '/customers',
-		icon: <HiOutlineUsers />
+		key: 'fundingRequests',
+		label: 'Funding Requests',
+		path: 'funding-requests',
+		icon: <HiOutlineCurrencyRupee />
 	},
 	{
-		key: 'transactions',
-		label: 'Transactions',
-		path: '/transactions',
+		key: 'mentorship-requests',
+		label: 'Mentorship Requests',
+		path: 'mentorship-requests',
 		icon: <HiOutlineDocumentText />
 	},
 	{
-		key: 'messages',
-		label: 'Messages',
-		path: '/messages',
+		key: 'collaborations',
+		label: 'Collaborations',
+		path: 'collaborations',
 		icon: <HiOutlineAnnotation />
 	}
 ]

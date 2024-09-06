@@ -18,6 +18,7 @@ const {
 const { sendMessage, allMessages } = require("./messageControllers");
 const { promptMessage } = require("./promptControllers");
 const { generateImage } = require("./imageControllers");
+const { createCollaborationRequest, getCollaborationRequests,getCollaborationRequest,updateCollaborationRequest,deleteCollaborationRequest } = require("./CollaborationRequest");
 
 module.exports = {
   
@@ -57,7 +58,14 @@ module.exports = {
   getMentorshipRequests,
   getMentorshipRequest,
   deleteMentorshipRequest,
-  
+
+  createCollaborationRequest,
+  getCollaborationRequests,
+  getCollaborationRequest,
+  updateCollaborationRequest,
+  deleteCollaborationRequest,
+
+
   createIPR,
   updateIPR,
   getIPRs,
