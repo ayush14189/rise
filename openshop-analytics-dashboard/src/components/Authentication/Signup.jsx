@@ -316,9 +316,10 @@ const Signup = () => {
           <option value='Investor'>Investor</option>
           <option value='Mentor'>Mentor</option>
           <option value='PublicUser'>Public User</option>
-          <option value='StartUp'>StartUp</option>
+          <option value='StartUp'>Startup</option>
           <option value='Researcher'>Researcher</option>
       </Select>
+      {localStorage.setItem("userType", userType)}
       {userType==="GovtAgency"?(<GovtAgency/>):(userType==="Incubator")?(<Incubator/>):(userType==="Investor")?(<Investor/>):(userType==="Mentor")?(<Mentor/>):(userType==="PublicUser")?(<PublicUser/>):(userType==="StartUp")?(<StartUp/>):(userType==="Researcher")?(<Researcher/>):""}
 
     </Stack>

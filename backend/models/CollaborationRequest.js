@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const collaborationRequestSchema = new mongoose.Schema({
-    startup_id: {
+    researchProject_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Startup',
+      ref: 'ResearchProject',
       required: true,
     },
     collaborator_name: {
@@ -14,6 +14,11 @@ const collaborationRequestSchema = new mongoose.Schema({
     },
     expected_outcome: {
       type: String,
+    },
+    status: {
+      type: String,
+      enum: ['Pending', 'Accepted', 'Rejected'],
+      default: 'Pending',
     },
     created_at: {
       type: Date,

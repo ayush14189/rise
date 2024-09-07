@@ -67,19 +67,22 @@ const Login = () => {
       });
 
       if (data.success) {
-        localStorage.setItem("userInfo", JSON.stringify(data));
+        localStorage.setItem("user", JSON.stringify(data));
+        
         setLoading(false);
 
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo && userInfo.userType === "startUp") {
+        const user = JSON.parse(localStorage.getItem("user"));
+        localStorage.setItem("userType",user.userType);
+        console.log(user.userType);
+        if (user && user.userType === "startUp") {
           navigate("/user");
-        } else if (userInfo && userInfo.userType === "incubator") {
-          navigate("/incubator/dashboard");
-        } else if (userInfo && userInfo.userType === "govtAgency") {
+        } else if (user && user.userType === "Researcher") {
+          navigate("/researcher");
+        } else if (user && user.userType === "govtAgency") {
           navigate("/user");
-        } else if (userInfo && userInfo.userType === "mentor") {
+        } else if (user && user.userType === "mentor") {
           navigate("/yettobedone");
-        } else if (userInfo && userInfo.userType === "investor") {
+        } else if (user && user.userType === "investor") {
           navigate("/investor/dashboard");
         } else {
           navigate("/yetobedone");

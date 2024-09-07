@@ -1,5 +1,5 @@
 const { authUser, allUsers } = require("./userControllers");
-const  {signupStartup} = require("./startupController");
+const  {createStartup,updateStartup,getStartup,getStartups} = require("./startupController");
 const {signupInvestor} = require("./investorController");
 const {signupResearcher} = require("./researcherController");
 const {signupGovtAgency} = require("./govtAgencyController");
@@ -7,6 +7,8 @@ const {createFundingRequest, updateFundingRequest, getFundingRequests,getFunding
 const {createProgressTracking, updateProgressTracking, getProgressTrackings,getProgressTracking,deleteProgressTracking} = require("./ProgressTrackerController");
 const {createMentorshipRequest, updateMentorshipRequest, getMentorshipRequests,getMentorshipRequest,deleteMentorshipRequest} = require("./MentorshipRequestController");
 const {createIPR, updateIPR, getIPRs,getIPR,deleteIPR} = require("./iprController");
+const {createPatent,getPatentById,getPatents,updatePatentStatus} = require("./PatentController");
+const {createResearchProject}=require("./researchProjectController")
 const {
   accessChat,
   fetchChats,
@@ -24,7 +26,12 @@ module.exports = {
   
   authUser,
   allUsers,
-  signupStartup,
+  createResearchProject,
+  createStartup,
+  updateStartup,
+  getStartup,
+  getStartups,
+
   signupInvestor,
   signupResearcher,
   signupGovtAgency,
@@ -71,5 +78,11 @@ module.exports = {
   getIPRs,
   getIPR,
   deleteIPR,
+
+  createPatent,
+  getPatentById,
+  getPatents,
+  updatePatentStatus,
+
 
 };

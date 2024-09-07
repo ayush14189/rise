@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 const researchProjectSchema = new Schema({
-    title: { type: String, required: true }, // Project title
-    description: { type: String }, // Detailed description of the project
-    collaborators: [{ type: Schema.Types.ObjectId, ref: 'User' }], // List of collaborators
-    startDate: { type: Date }, // Start date of the project
-    endDate: { type: Date }, // End date of the project (if completed)
-    status: { type: String, enum: ['ongoing', 'completed'], default: 'ongoing' }, // Status of the project
-    leadResearcher: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to the researcher leading the project
-  }, { timestamps: true });
-  
-  const ResearchProject = mongoose.model('ResearchProject', researchProjectSchema);
-  module.exports = ResearchProject;
-  
+  title: { type: String, required: true },
+  description: { type: String },
+  startDate: { type: Date },
+  category: { type: String},
+  endDate: { type: Date },
+  status: { type: String, enum: ['Active', 'Completed', 'On Hold'], default: 'Active' },
+  researchers: [{ type: Schema.Types.ObjectId, ref: 'Researcher' }], // References to researchers involved
+  patents: [{ type: Schema.Types.ObjectId, ref: 'Patent' }], // References to related patents
+  trademarks: [{ type: Schema.Types.ObjectId, ref: 'Trademark' }], // References to related trademarks
+  // Add any other relevant fields
+}, { timestamps: true });
+
+module.exports = mongoose.model('ResearchProject', researchProjectSchema);

@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
   },
   userType: {
     type: String,
-    enum: ['startup', 'mentor', 'admin'],
+    enum: ['Startup', 'Mentor', 'admin','Researcher'],
     required: true,
   },
   created_at: {

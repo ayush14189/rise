@@ -6,34 +6,89 @@ const {
   verifyPassword,
 } = require("../config");
 const { verifyGST } = require("../middleware");
-const signupStartup = async (req, res) => {
+ // Adjust the path according to your project structure
+
+// Create a new startup
+exports.createStartup = async (req, res) => {
+  console.log(req.body);
+  const password = req.body.password;
+  console.log(password);
+  try {
+    const user = new User({
+      email: req.body.email,
+      password: await generateHashedPassword(password),
+      userType: req.body.userType,
+    });
+    await user.save();
     try {
-      const { name, email, password, companyName, gstNumber, foundingYear,panNumber,startupDomain,startupOwner } = req.body;
-  
-      // Create the startup document
       const startup = new Startup({
-        companyName,
-        gstNumber,
-        panNumber,
-        startupDomain,
-        startupOwner,
-        foundingYear
+        user_id: user._id,
+        startup_name: req.body.startup_name,
+        founder_name: req.body.founder_name,
+        industry_sector: req.body.industry_sector,
+        description: req.body.description,
+        business_stage: req.body.business_stage,
+        incorporation_date: req.body.incorporation_date,
+        employees_count: req.body.employees_count,
+        website_url: req.body.website_url,
+        pitch_deck_url: req.body.pitch_deck_url,
       });
       await startup.save();
-  
-      // Create the user document and associate it with the startup
-      const user = new User({
-        name,
-        email,
-        password:await generateHashedPassword(password),  // Note: Password should be hashed
-        userType: 'startup',
-        startup: startup._id
-      });
-      await user.save();
-      
-      res.status(201).json({ success: true, message: 'Startup registered successfully', data: user });
+      res.status(201).json(startup);
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Error during signup', error: error.message });
+      console.error(error);
+      res.status(400).json({ error: error.message });
     }
-  };
-module.exports = {signupStartup};
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: error.message });
+  }
+  
+};
+
+// Get all startups
+exports.getStartups = async (req, res) => {
+  try {
+    const startups = await Startup.find();
+    res.json(startups);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Get a startup by ID
+exports.getStartup = async (req, res) => {
+  try {
+    const startup = await Startup.findById(req.params.id);
+    if (!startup) return res.status(404).json({ message: 'Startup not found' });
+    res.json(startup);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Update a startup
+exports.updateStartup = async (req, res) => {
+  try {
+    const startup = await Startup.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!startup) return res.status(404).json({ message: 'Startup not found' });
+    res.json(startup);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Delete a startup
+exports.deleteStartup = async (req, res) => {
+  try {
+    const startup = await Startup.findByIdAndDelete(req.params.id);
+    if (!startup) return res.status(404).json({ message: 'Startup not found' });
+    res.json({ message: 'Startup deleted' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

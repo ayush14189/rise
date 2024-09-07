@@ -10,8 +10,11 @@ import ViewEditStartup from './pages/Startup/ViewEdit'
 import FundingRequest from './pages/Startup/FundingRequest'
 import MentorshipRequest from './pages/Startup/MentorshipRequests'
 import CollaborationRequest from './pages/Startup/Collaborations'
-
-
+import ResearchProjects from './pages/Researcher/ResearchProject'
+import PatentFiling from './pages/Researcher/Patent'
+import ResearcherDashboard from './pages/Researcher/Dashboard'
+import ResearcherCollaboration from './pages/Researcher/Collaborations'
+import InvestorDashboard from './pages/Investor/Dashboard'
 function App() {
     return (
         <Router>
@@ -27,6 +30,16 @@ function App() {
                     <Route path="collaborations" element={<CollaborationRequest />} />
 
                     <Route path="IPRFOrm" element={<IprForm />} />
+                </Route>
+                <Route path='/researcher' element={<Layout />}>
+                    <Route index element={<ResearcherDashboard />} />
+                    <Route path="research-projects" element={<ResearchProjects />} />
+                    <Route path='collaborations' element={<ResearcherCollaboration />} />
+                    <Route path='patents' element={<PatentFiling />} />
+                </Route>
+                <Route path='/investor' element={<Layout />}>
+                    <Route index element={<InvestorDashboard />} />
+                    <Route path='portfolio' element={<Products />} />
                 </Route>
                 <Route path="/register" element={<Register />} />
             </Routes>

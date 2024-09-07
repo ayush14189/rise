@@ -9,26 +9,25 @@ const { verifyGST } = require("../middleware");
 
 const signupResearcher = async (req, res) => {
     try {
-      const { name, email, password, institution} = req.body;
-  
-      // Create the researcher document
-      const researcher = new Researcher({
-        institution
-      });
-      await researcher.save();
-  
-      // Create the user document and associate it with the researcher
+      const { name, email, password, affialation,researchInterests} = req.body;
+
       const user = new User({
-        name,
         email,
-        password,  // Note: Password should be hashed
+        password: await generateHashedPassword(password),  
         userType: 'researcher',
-        researcher: researcher._id
       });
       await user.save();
-  
-      res.status(201).json({ success: true, message: 'Researcher registered successfully', data: user });
+      const researcher = new Researcher({
+        user_id: user._id,
+        name,
+        affialation,
+        researchInterests,
+      });
+      await researcher.save();
+      
+      res.status(201).json({ success: true, message: 'Researcher registered successfully', data: researcher });
     } catch (error) {
+      console.error(error);
       res.status(500).json({ success: false, message: 'Error during signup', error: error.message });
     }
   };

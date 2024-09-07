@@ -4,14 +4,16 @@ const CollaborationRequest = require('../models/CollaborationRequest'); // Adjus
 exports.createCollaborationRequest = async (req, res) => {
   try {
     const collaborationRequest = new CollaborationRequest({
-      startup_id: req.body.startup_id,
+      researchProject_id: req.body.researchProject_id,
       collaborator_name: req.body.collaborator_name,
       purpose: req.body.purpose,
       expected_outcome: req.body.expected_outcome,
+      status: req.body.status,
     });
     await collaborationRequest.save();
     res.status(201).json(collaborationRequest);
   } catch (error) {
+    console.error(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -19,9 +21,11 @@ exports.createCollaborationRequest = async (req, res) => {
 // Get all collaboration requests
 exports.getCollaborationRequests = async (req, res) => {
   try {
-    const collaborationRequests = await CollaborationRequest.find();
+    const collaborationRequests = await CollaborationRequest.find().populate('researchProject_id');;
+    
     res.json(collaborationRequests);
   } catch (error) {
+    console.error(error);
     res.status(400).json({ error: error.message });
   }
 };
