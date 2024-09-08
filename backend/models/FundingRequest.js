@@ -1,34 +1,45 @@
 const mongoose = require('mongoose');
-const fundingRequestSchema = new mongoose.Schema({
+
+const fundingRequestSchema = new mongoose.Schema(
+  {
     startup_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Startup',
       required: true,
     },
-    amount_requested: {
+    investor_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Investor',
+    },
+    requestedAmount: {
       type: Number,
       required: true,
     },
-    purpose: {
+    proposedEquity: {
+      type: Number,
+      required: true,
+    },
+    status: {
       type: String,
+      enum: ['pending', 'accepted', 'rejected', 'countered'],
+      default: 'pending',
     },
-    funding_status: {
-      type: String,
-      enum: ['Pending', 'Approved', 'Rejected'],
-      default: 'Pending',
+    
+    // Counter Offer Fields
+    counterAmount: {
+      type: Number,  // Amount the other party proposes
     },
-    supporting_documents: {
-      type: String,
+    counterEquity: {
+      type: Number,  // Equity the other party proposes
     },
-    created_at: {
-      type: Date,
-      default: Date.now,
+    negotiationMessage: {
+      type: String,  // Optional message related to the negotiation
     },
-    updated_at: {
-      type: Date,
-      default: Date.now,
-    },
-  });
+
+    
   
-  module.exports = mongoose.model('FundingRequest', fundingRequestSchema);
-  
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model('FundingRequest', fundingRequestSchema);

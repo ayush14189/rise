@@ -31,12 +31,12 @@ export default function Sidebar() {
 	console.log(userType)
 
     switch (userType) {
-        case 'StartUp':
+        case 'Startup':
             sidebarLinks = DASHBOARD_SIDEBAR_LINKS;
             sidebarBottomLinks = DASHBOARD_SIDEBAR_BOTTOM_LINKS;
 			console.log("hello")
             break;
-        case 'ipr':
+        case 'IprManager':
             sidebarLinks = IPR_SIDEBAR_LINKS;
             sidebarBottomLinks = IPR_SIDEBAR_BOTTOM_LINKS;
             break;
@@ -48,7 +48,7 @@ export default function Sidebar() {
             sidebarLinks = POLICY_MAKER_SIDEBAR_LINKS;
             sidebarBottomLinks = POLICY_MAKER_SIDEBAR_BOTTOM_LINKS;
             break;
-        case 'investor':
+        case 'Investor':
             sidebarLinks = INVESTOR_SIDEBAR_LINKS;
             sidebarBottomLinks = INVESTOR_SIDEBAR_BOTTOM_LINKS;
             break;

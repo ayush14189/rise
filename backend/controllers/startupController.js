@@ -92,3 +92,21 @@ exports.deleteStartup = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+exports.getStartupByUserId = async (req, res) => {
+  try {
+      const user_id = req.params.userId;
+      if (!user_id) {
+          return res.status(400).json({ error: 'User ID is required' });
+      }
+
+      const userInfo = await Startup.find({user_id});
+      if (!userInfo) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+
+      res.status(200).json(userInfo);
+  } catch (error) {
+      console.error('Error fetching user info:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+};

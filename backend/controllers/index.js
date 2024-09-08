@@ -1,12 +1,12 @@
 const { authUser, allUsers } = require("./userControllers");
-const  {createStartup,updateStartup,getStartup,getStartups} = require("./startupController");
-const {signupInvestor} = require("./investorController");
-const {signupResearcher} = require("./researcherController");
+const  {createStartup,updateStartup,getStartup,getStartups,getStartupByUserId} = require("./startupController");
+const {registerInvestor,updateInvestor,getInvestor,getInvestorByUserId} = require("./investorController");
+const {signupResearcher,getResearcherByUserId} = require("./researcherController");
 const {signupGovtAgency} = require("./govtAgencyController");
 const {createFundingRequest, updateFundingRequest, getFundingRequests,getFundingRequest,deleteFundingRequest} = require("./FundingRequestController");
 const {createProgressTracking, updateProgressTracking, getProgressTrackings,getProgressTracking,deleteProgressTracking} = require("./ProgressTrackerController");
 const {createMentorshipRequest, updateMentorshipRequest, getMentorshipRequests,getMentorshipRequest,deleteMentorshipRequest} = require("./MentorshipRequestController");
-const {createIPR, updateIPR, getIPRs,getIPR,deleteIPR} = require("./iprController");
+const {createIPR, updateIPR, getIPRs,getIPR,deleteIPR} = require("./iprManagerController");
 const {createPatent,getPatentById,getPatents,updatePatentStatus} = require("./PatentController");
 const {createResearchProject}=require("./researchProjectController")
 const {
@@ -31,9 +31,10 @@ module.exports = {
   updateStartup,
   getStartup,
   getStartups,
-
-  signupInvestor,
+  getStartupByUserId,
+  
   signupResearcher,
+  getResearcherByUserId,
   signupGovtAgency,
   accessChat,
   fetchChats,
@@ -84,5 +85,9 @@ module.exports = {
   getPatents,
   updatePatentStatus,
 
+  registerInvestor,
+  updateInvestor,
+  getInvestor,
+  getInvestorByUserId
 
 };

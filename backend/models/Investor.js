@@ -1,12 +1,32 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
-const investorSchema = new Schema({
-    investorName: { type: String, required: true },
-    company: { type: String },
-    contactDetails: { type: String },
-    startupsInvestedIn: [{ type: Schema.Types.ObjectId, ref: 'Startup' }]  // List of startups' IDs
-  }, { timestamps: true });
-  
-  const Investor = mongoose.model('Investor', investorSchema);
-  module.exports = Investor;
-  
+const investorSchema = mongoose.Schema(
+  {
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    investmentFocus: {
+      type: String,
+      required: true,
+    },
+    experienceLevel: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    // Additional fields from the frontend componen
+  },
+  { timestamps: true }
+);
+module.exports = mongoose.model('Investor', investorSchema);

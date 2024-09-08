@@ -4,7 +4,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   Stack,
   useToast,
@@ -18,140 +17,54 @@ const Investor = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
-  const [userType, setuserType] = useState("");
 
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    pic: "", 
-    gstNumber: "", 
-    cinNumber: "", 
-    panNumber: "", 
-    incubator_address: "", 
-    startup_domain: "", 
-    startup_owner: "", 
-    investor_amount:0,
+    investmentFocus: "",
+    experienceLevel: "",
+    phone: "",
+    country: "",
+    UserType: "Investor",
   });
 
   const handleCredentials = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value});
-  };
-
-  const handleUploadPicture = async (e) => {
-    setLoading(true);
-
-    // If no image selected
-    if (e.target.files[0] === undefined) {
-      return toast({
-        title: "Please select an image",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-right",
-        variant: "left-accent",
-      });
-    }
-
-    // Check if the type of image is jpeg or png
-    if (
-      e.target.files[0].type === "image/jpeg" ||
-      e.target.files[0].type === "image/png"
-    ) {
-      try {
-        const data = new FormData();
-        data.append("file", e.target.files[0]); // Contains the file
-        data.append("upload_preset", "chat-app"); // Upload preset in Cloudinary
-        data.append("cloud_name", "devcvus7v"); // Cloud name in Cloudinary
-
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/devcvus7v/image/upload",
-          {
-            method: "POST",
-            body: data,
-          }
-        );
-        const json = await response.json();
-
-        setCredentials({
-          ...credentials,
-          [e.target.name]: json.secure_url.toString(),
-        });
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    } else {
-      console.log("Hello");
-      setLoading(false);
-      return toast({
-        title: "Please select an image",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-right",
-        variant: "left-accent",
-      });
-    }
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const submitHandler = async () => {
     setLoading(true);
 
-    // If anything is missing
-    if (
-      !credentials.name ||
-      !credentials.email ||
-      !credentials.password ||
-      !credentials.confirmPassword
-    ) {
+    // Validation
+    if (!credentials.name || !credentials.email || !credentials.password || !credentials.confirmPassword) {
       setLoading(false);
       return toast({
-        title: "Please Fill all the Feilds",
+        title: "Please fill all the required fields",
         status: "warning",
         duration: 5000,
         isClosable: true,
         position: "bottom-right",
-        variant: "left-accent",
       });
     }
 
-    // If password and confirm password doesn't match
     if (credentials.password !== credentials.confirmPassword) {
       setLoading(false);
       return toast({
-        title: "Passwords Do Not Match",
+        title: "Passwords do not match",
         status: "warning",
         duration: 5000,
         isClosable: true,
         position: "bottom-right",
-        variant: "left-accent",
       });
     }
 
-    // Now submit the data
     try {
       const response = await fetch("http://localhost:5000/api/user/investor", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: credentials.name,
-          email: credentials.email,
-          password: credentials.password,
-          pic: credentials.pic,
-          userType: "investor", 
-          gstNumber:credentials.gstNumber, 
-          cinNumber:credentials.cinNumber, 
-          panNumber:credentials.panNumber, 
-          incubator_address:credentials.incubator_address, 
-          startup_domain:credentials.startup_domain, 
-          startup_owner:credentials.startup_owner, 
-          investor_amount:credentials.investor_amount,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
       });
       const data = await response.json();
 
@@ -161,13 +74,12 @@ const Investor = () => {
         duration: 5000,
         isClosable: true,
         position: "bottom-right",
-        variant: !data.success ? "left-accent" : "solid",
       });
 
       if (data.success) {
         localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
-          navigate("/investor/dashboard");
+        navigate("/investor");
       } else {
         setLoading(false);
       }
@@ -179,132 +91,140 @@ const Investor = () => {
         duration: 5000,
         isClosable: true,
         position: "bottom-right",
-        variant: "solid",
       });
     }
   };
 
   return (
     <Stack spacing="6">
-
-      <Stack spacing="5">
-        <FormControl isRequired id="name">
-          <FormLabel htmlFor="name" color="white">Name</FormLabel>
-          <Input
+      {/* Name */}
+      <FormControl isRequired id="name">
+        <FormLabel color="white">Name</FormLabel>
+        <Input
           background="white"
-            type="text"
-            name="name"
-            value={credentials.name}
-            placeholder="Enter Your Name"
-            onChange={(e) => handleCredentials(e)}
-          />
-        </FormControl>
-      </Stack>
+          type="text"
+          name="name"
+          value={credentials.name}
+          placeholder="Enter your name"
+          onChange={handleCredentials}
+        />
+      </FormControl>
 
-      <Stack spacing="5">
-        <FormControl isRequired id="email">
-          <FormLabel htmlFor="email" color="white">Email</FormLabel>
+      {/* Email */}
+      <FormControl isRequired id="email">
+        <FormLabel color="white">Email</FormLabel>
+        <Input
+          background="white"
+          type="email"
+          name="email"
+          value={credentials.email}
+          placeholder="Enter your email"
+          onChange={handleCredentials}
+        />
+      </FormControl>
+
+      {/* Phone (Optional) */}
+      <FormControl id="phone">
+        <FormLabel color="white">Phone Number</FormLabel>
+        <Input
+          background="white"
+          type="tel"
+          name="phone"
+          value={credentials.phone}
+          placeholder="Enter your phone number"
+          onChange={handleCredentials}
+        />
+      </FormControl>
+
+      {/* Password */}
+      <FormControl isRequired id="password">
+        <FormLabel color="white">Password</FormLabel>
+        <InputGroup background="white">
+          <InputRightElement w="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
           <Input
-           background="white"
-            type="email"
-            name="email"
-            value={credentials.email}
-            placeholder="Enter Your Email"
-            onChange={(e) => handleCredentials(e)}
+            type={show ? "text" : "password"}
+            name="password"
+            value={credentials.password}
+            placeholder="Password"
+            onChange={handleCredentials}
           />
-        </FormControl>
-      </Stack>
+        </InputGroup>
+      </FormControl>
 
-      <Stack spacing="5">
-          <FormControl isRequired id="panNumber">
-            <FormLabel htmlFor="panNumber" color="white">PAN Number</FormLabel>
-            <Input
-             background="white"
-              type="text"
-              name="panNumber"
-              value={credentials.panNumber}
-              placeholder="Enter Your PAN Number"
-              onChange={(e) => handleCredentials(e)}
-            />
-          </FormControl>
-        </Stack>
+      {/* Confirm Password */}
+      <FormControl isRequired id="confirmPassword">
+        <FormLabel color="white">Confirm Password</FormLabel>
+        <InputGroup background="white">
+          <InputRightElement w="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+          <Input
+            type={show ? "text" : "password"}
+            name="confirmPassword"
+            value={credentials.confirmPassword}
+            placeholder="Confirm Password"
+            onChange={handleCredentials}
+          />
+        </InputGroup>
+      </FormControl>
 
-      <Stack spacing="5">
-        <FormControl isRequired id="password">
-          <FormLabel htmlFor="password" color="white">Password</FormLabel>
-          <InputGroup  background="white">
-            <InputRightElement w="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-            <Input
-              type={show ? "text" : "password"}
-              name="password"
-              value={credentials.password}
-              placeholder="Password"
-              onChange={(e) => handleCredentials(e)}
-            />
-          </InputGroup>
-        </FormControl>
-      </Stack>
+      {/* Investment Focus */}
+      <FormControl id="investmentFocus">
+        <FormLabel color="white">Investment Focus</FormLabel>
+        <Select
+          background="white"
+          name="investmentFocus"
+          value={credentials.investmentFocus}
+          placeholder="Select your investment focus"
+          onChange={handleCredentials}
+        >
+          <option value="Tech">Tech</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Real Estate">Real Estate</option>
+        </Select>
+      </FormControl>
 
-      <Stack spacing="5">
-        <FormControl isRequired id="confirmPassword">
-          <FormLabel htmlFor="confirmPassword" color="white">Confirm Password</FormLabel>
-          <InputGroup  background="white">
-            <InputRightElement w="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-            <Input
-              type={show ? "text" : "password"}
-              name="confirmPassword"
-              value={credentials.confirmPassword}
-              placeholder="Confirm Password"
-              onChange={(e) => handleCredentials(e)}
-            />
-          </InputGroup>
-        </FormControl>
-      </Stack>
+      {/* Experience Level */}
+      <FormControl id="experienceLevel">
+        <FormLabel color="white">Experience Level</FormLabel>
+        <Select
+          background="white"
+          name="experienceLevel"
+          value={credentials.experienceLevel}
+          placeholder="Select your experience level"
+          onChange={handleCredentials}
+        >
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Expert">Expert</option>
+        </Select>
+      </FormControl>
 
-      <Stack spacing="5">
-        <FormControl id="pic">
-          <FormLabel htmlFor="pic" color="white">Upload your Picture</FormLabel>
+      {/* Country */}
+      <FormControl id="country">
+        <FormLabel color="white">Country</FormLabel>
+        <Input
+          background="white"
+          type="text"
+          name="country"
+          value={credentials.country}
+          placeholder="Enter your country"
+          onChange={handleCredentials}
+        />
+      </FormControl>
 
-          <InputGroup  background="white">
-            <InputLeftElement pointerEvents="none">
-              <i className="fas fa-folder-open" />
-            </InputLeftElement>
-
-            <Input
-              type="file"
-              name="pic"
-              accept="image/*"
-              isInvalid={true}
-              errorBorderColor="#eaafc8"
-              sx={{
-                "::file-selector-button": {
-                  height: 10,
-                  padding: 0,
-                  mr: 4,
-                  background: "none",
-                  border: "none",
-                  fontWeight: "bold",
-                },
-              }}
-              onChange={(e) => handleUploadPicture(e)}
-            />
-          </InputGroup>
-        </FormControl>
-      </Stack>
-
+      {/* Submit Button */}
       <Button
         colorScheme="blue"
         width="100%"
-        style={{ marginTop: 15 }}
-        onClick={() => submitHandler()}
+        mt={4}
+        onClick={submitHandler}
         isLoading={loading}
       >
         Sign Up

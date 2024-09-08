@@ -300,6 +300,7 @@ import Mentor from "./UserBasedSignUp/Mentor";
 import PublicUser from "./UserBasedSignUp/PublicUser";
 import StartUp from "./UserBasedSignUp/StartUp";
 import Researcher from "./UserBasedSignUp/Researcher";
+import IprManager from "./UserBasedSignUp/IprManager";
 
 const Signup = () => {
   const [userType, setuserType] = useState("");
@@ -311,16 +312,16 @@ const Signup = () => {
       onChange={(event) => {
         setuserType(event?.target?.value);
       }} >
-          <option value='GovtAgency'>Government Agency</option>
-          <option value='Incubator'>Incubator</option>
+          <option value='PolicyMaker'>Policy Maker</option>
+          <option value='Researcher'>Researcher</option>
           <option value='Investor'>Investor</option>
           <option value='Mentor'>Mentor</option>
-          <option value='PublicUser'>Public User</option>
           <option value='StartUp'>Startup</option>
-          <option value='Researcher'>Researcher</option>
+          <option value='IprManager'>IPR Manager</option>
+          
       </Select>
       {localStorage.setItem("userType", userType)}
-      {userType==="GovtAgency"?(<GovtAgency/>):(userType==="Incubator")?(<Incubator/>):(userType==="Investor")?(<Investor/>):(userType==="Mentor")?(<Mentor/>):(userType==="PublicUser")?(<PublicUser/>):(userType==="StartUp")?(<StartUp/>):(userType==="Researcher")?(<Researcher/>):""}
+      {userType==="PolicyMaker"?(<GovtAgency/>):(userType==="Incubator")?(<Incubator/>):(userType==="Investor")?(<Investor/>):(userType==="Mentor")?(<Mentor/>):(userType==="PublicUser")?(<PublicUser/>):(userType==="StartUp")?(<StartUp/>):(userType==="Researcher")?(<Researcher/>):(userType==="IprManager")?(<IprManager/>):""}
 
     </Stack>
   );

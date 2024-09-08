@@ -76,51 +76,51 @@ export const IPR_SIDEBAR_LINKS = [
     {
         key: 'iprdashboard',
         label: 'Dashboard',
-        path: '/iprmanage',
+        path: '/iprmanager',
         icon: <MdDashboard />
     },
     {
-        key: 'iprrecords',
-        label: 'Records',
-        path: 'iprrecords',
+        key: 'iprtrademarks',
+        label: 'Manage Trademarks',
+        path: 'trademarks',
         icon: <HiOutlineDocumentText />
     },
     {
-        key: 'iprapplications',
-        label: 'New Applications',
-        path: 'iprapplications',
+        key: 'iprpatents',
+        label: 'Manage Patents',
+        path: 'patents',
         icon: <HiOutlineDocumentAdd />
     },
-    {
-        key: 'iprstatus',
-        label: 'Status Tracker',
-        path: 'iprstatus',
-        icon: <HiOutlineClipboardCheck />
-    },
-    {
-        key: 'iprrenewals',
-        label: 'Renewals',
-        path: 'iprrenewals',
-        icon: <HiOutlineRefresh />
-    },
-    {
-        key: 'iprdisputes',
-        label: 'Disputes',
-        path: 'iprdisputes',
-        icon: <HiOutlineExclamationCircle />
-    },
-    {
-        key: 'iprreports',
-        label: 'Reports',
-        path: 'iprreports',
-        icon: <HiOutlineChartSquareBar />
-    },
-    {
-        key: 'iprresources',
-        label: 'Legal Resources',
-        path: 'iprresources',
-        icon: <GiBookshelf />
-    }
+    // {
+    //     key: 'iprstatus',
+    //     label: 'Status Tracker',
+    //     path: 'iprstatus',
+    //     icon: <HiOutlineClipboardCheck />
+    // },
+    // {
+    //     key: 'iprrenewals',
+    //     label: 'Renewals',
+    //     path: 'iprrenewals',
+    //     icon: <HiOutlineRefresh />
+    // },
+    // {
+    //     key: 'iprdisputes',
+    //     label: 'Disputes',
+    //     path: 'iprdisputes',
+    //     icon: <HiOutlineExclamationCircle />
+    // },
+    // {
+    //     key: 'iprreports',
+    //     label: 'Reports',
+    //     path: 'iprreports',
+    //     icon: <HiOutlineChartSquareBar />
+    // },
+    // {
+    //     key: 'iprresources',
+    //     label: 'Legal Resources',
+    //     path: 'iprresources',
+    //     icon: <GiBookshelf />
+    // }
 ]
 
 
@@ -156,12 +156,12 @@ export const RESEARCHER_SIDEBAR_LINKS = [
         path: 'research-projects',
         icon: <HiOutlineCube />
     },
-    {
-        key: 'resproposals',
-        label: 'Innovation Proposals',
-        path: 'resproposals',
-        icon: <HiOutlineDocumentAdd />
-    },
+    // {
+    //     key: 'resproposals',
+    //     label: 'Innovation Proposals',
+    //     path: 'resproposals',
+    //     icon: <HiOutlineDocumentAdd />
+    // },
     {
         key: 'rescollaborations',
         label: 'Collaborations',
@@ -283,45 +283,45 @@ export const INVESTOR_SIDEBAR_LINKS = [
     {
         key: 'invdashboard',
         label: 'Dashboard',
-        path: 'investor',
+        path: '/investor',
         icon: <MdDashboard />
     },
     {
-        key: 'invportfolio',
-        label: 'Portfolio',
-        path: 'portfolio',
-        icon: <HiOutlineChartPie />
-    },
-    {
-        key: 'invinvestments',
-        label: 'Investments',
-        path: 'invinvestments',
+        key: 'myinvestments',
+        label: 'MyInvestments',
+        path: 'myinvestments',
         icon: <HiOutlineCurrencyDollar />
     },
     {
-        key: 'invanalysis',
-        label: 'Market Analysis',
-        path: 'invanalysis',
+        key: 'collaborationRequests',
+        label: 'Collaboration Requests',
+        path: 'collaborationRequests',
+        icon: <HiOutlineUserGroup />
+    },
+    {
+        key: 'startupMonitoring',
+        label: 'Startup Monitoring',
+        path: 'startupmonitoring',
         icon: <HiOutlinePresentationChartLine />
     },
+    // {
+    //     key: 'invperformance',
+    //     label: 'Performance',
+    //     path: 'invperformance',
+    //     icon: <HiOutlineTrendingUp />
+    // },
     {
-        key: 'invperformance',
-        label: 'Performance',
-        path: 'invperformance',
-        icon: <HiOutlineTrendingUp />
-    },
-    {
-        key: 'invreports',
-        label: 'Reports',
-        path: 'invreports',
+        key: 'fundrequests',
+        label: 'Funding Requests',
+        path: 'fundingRequests',
         icon: <HiOutlineDocumentReport />
     },
-    {
-        key: 'invnetwork',
-        label: 'Network',
-        path: 'invnetwork',
-        icon: <HiOutlineUserGroup />
-    }
+    // {
+    //     key: 'invnetwork',
+    //     label: 'Network',
+    //     path: 'invnetwork',
+    //     icon: <HiOutlineUserGroup />
+    // }
 ]
 
 

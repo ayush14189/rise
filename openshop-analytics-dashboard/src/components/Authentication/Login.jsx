@@ -66,7 +66,7 @@ const Login = () => {
         variant: !data.success ? "left-accent" : "solid",
       });
 
-      if (data.success) {
+      if (data) {
         localStorage.setItem("user", JSON.stringify(data));
         
         setLoading(false);
@@ -74,16 +74,16 @@ const Login = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         localStorage.setItem("userType",user.userType);
         console.log(user.userType);
-        if (user && user.userType === "startUp") {
+        if (user && user.userType === "Startup") {
           navigate("/user");
         } else if (user && user.userType === "Researcher") {
           navigate("/researcher");
-        } else if (user && user.userType === "govtAgency") {
+        } else if (user && user.userType === "PolicyMaker") {
           navigate("/user");
-        } else if (user && user.userType === "mentor") {
-          navigate("/yettobedone");
-        } else if (user && user.userType === "investor") {
-          navigate("/investor/dashboard");
+        } else if (user && user.userType === "IprManager") {
+          navigate("/iprmanager");
+        } else if (user && user.userType === "Investor") {
+          navigate("/investor");
         } else {
           navigate("/yetobedone");
         }

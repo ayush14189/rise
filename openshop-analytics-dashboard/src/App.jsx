@@ -15,6 +15,13 @@ import PatentFiling from './pages/Researcher/Patent'
 import ResearcherDashboard from './pages/Researcher/Dashboard'
 import ResearcherCollaboration from './pages/Researcher/Collaborations'
 import InvestorDashboard from './pages/Investor/Dashboard'
+import MyInvestments from './pages/Investor/MyInvestements'
+import CollaborationRequests from './pages/Investor/CollaborationRequests'
+import FundingRequests from './pages/Investor/FundingRequests'
+import StartupsMonitor from './pages/Investor/StartupMonitor'
+import IPRDashboard from './pages/IPRManager/IPRDashboard'
+import NewTrademarkApplications from './pages/IPRManager/NewTrademarkApplications'
+import NewPatentApplications from './pages/IPRManager/NewPatentApplications'
 function App() {
     return (
         <Router>
@@ -39,7 +46,15 @@ function App() {
                 </Route>
                 <Route path='/investor' element={<Layout />}>
                     <Route index element={<InvestorDashboard />} />
-                    <Route path='portfolio' element={<Products />} />
+                    <Route path='myinvestments' element={<MyInvestments />} />
+                    <Route path='collaborationRequests' element={<CollaborationRequests />} />
+                    <Route path='fundingRequests' element={<FundingRequests />} />
+                    <Route path='startupmonitoring' element={<StartupsMonitor />} />
+                </Route>
+                <Route path='/iprmanager' element={<Layout />}>
+                    <Route index element={<IPRDashboard />} />
+                    <Route path='trademarks' element={<NewTrademarkApplications/>} />
+                    <Route path='patents' element={<NewPatentApplications/>} />
                 </Route>
                 <Route path="/register" element={<Register />} />
             </Routes>

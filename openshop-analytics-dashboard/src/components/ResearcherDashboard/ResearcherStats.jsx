@@ -11,8 +11,8 @@ export default function ResearcherStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Your Research Project</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$54232</strong>
-						<span className="text-sm text-green-500 pl-2">+343</span>
+						<strong className="text-xl text-gray-700 font-semibold">1</strong>
+						<span className="text-sm text-green-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -23,8 +23,8 @@ export default function ResearcherStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Research Project Completed</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$3423</strong>
-						<span className="text-sm text-green-500 pl-2">-343</span>
+						<strong className="text-xl text-gray-700 font-semibold">0</strong>
+						<span className="text-sm text-green-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -35,8 +35,8 @@ export default function ResearcherStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Patents Filed</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">12313</strong>
-						<span className="text-sm text-red-500 pl-2">-30</span>
+						<strong className="text-xl text-gray-700 font-semibold">0</strong>
+						<span className="text-sm text-red-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -47,8 +47,8 @@ export default function ResearcherStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Patents Granted</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">16432</strong>
-						<span className="text-sm text-red-500 pl-2">-43</span>
+						<strong className="text-xl text-gray-700 font-semibold">0</strong>
+						<span className="text-sm text-red-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
