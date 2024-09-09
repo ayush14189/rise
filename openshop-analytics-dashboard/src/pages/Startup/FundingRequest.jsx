@@ -1,119 +1,181 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const FundingRequest = () => {
+const FundingRequests = () => {
+  const startupJson = localStorage.getItem('userInfo');
+  const startup = JSON.parse(startupJson);
   const [formData, setFormData] = useState({
-    amount: '',
+    requestedAmount: '',
+    proposedEquity: '',
     purpose: '',
-    description: ''
+    startup_id: startup._id,
+
   });
+  
+  const [fundingRequests, setFundingRequests] = useState([]);
 
-  const [submittedRequests, setSubmittedRequests] = useState([]);
+  useEffect(() => {
+    fetchFundingRequests();
+  }, []);
 
-  // Handle form input change
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const fetchFundingRequests = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/funding-requests/${startup._id}`);
+      const data = await response.json();
+      setFundingRequests(data);
+    } catch (error) {
+      console.error('Error fetching funding requests:', error);
+    }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/user/funding-requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Add new request to the table
-    setSubmittedRequests([...submittedRequests, { ...formData, status: 'Pending' }]);
+      if (response.ok) {
+        const newFundingRequest = await response.json();
+        setFundingRequests((prevRequests) => [...prevRequests, newFundingRequest]);
+        setFormData({
+          requestedAmount: '',
+          proposedEquity: '',
+          purpose: '',
+        });
+      } else {
+        console.error('Failed to submit funding request');
+      }
+    } catch (error) {
+      console.error('Error submitting funding request:', error);
+    }
+  };
 
-    // Clear the form
-    setFormData({
-      amount: '',
-      purpose: '',
-      description: ''
-    });
+  const handleAcceptProposal = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/funding-requests/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        
+      }, body : JSON.stringify({ status: 'accepted' })});
+
+      if (response.ok) {
+        const updatedRequest = await response.json();
+        setFundingRequests((prevRequests) =>
+          prevRequests.map((request) =>
+            request._id === id ? updatedRequest : request
+          )
+        );
+      } else {
+        console.error('Failed to accept proposal');
+      }
+    } catch (error) {
+      console.error('Error accepting proposal:', error);
+    }
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      {/* Funding Request Form */}
-      <h2 className="text-2xl font-bold mb-4">Submit a Funding Request</h2>
-      <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-        <div className="flex flex-col">
-          <label className="font-semibold mb-2" htmlFor="amount">Funding Amount (in $)</label>
+    <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-semibold mb-4">Submit New Funding Request</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Requested Amount</label>
           <input
             type="number"
-            id="amount"
-            name="amount"
-            value={formData.amount}
+            name="requestedAmount"
+            value={formData.requestedAmount}
             onChange={handleChange}
-            className="p-2 border border-gray-300 rounded-md"
-            placeholder="Enter amount"
+            className="w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
-
-        <div className="flex flex-col">
-          <label className="font-semibold mb-2" htmlFor="purpose">Purpose</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Proposed Equity (%)</label>
+          <input
+            type="number"
+            name="proposedEquity"
+            value={formData.proposedEquity}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Purpose</label>
           <input
             type="text"
-            id="purpose"
             name="purpose"
             value={formData.purpose}
             onChange={handleChange}
-            className="p-2 border border-gray-300 rounded-md"
-            placeholder="Enter purpose"
+            className="w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
-
-        <div className="flex flex-col">
-          <label className="font-semibold mb-2" htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="p-2 border border-gray-300 rounded-md"
-            placeholder="Enter description"
-            required
-          ></textarea>
-        </div>
-
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md"
         >
-          Submit Request
+          Submit
         </button>
       </form>
 
-      {/* Table to display submitted requests */}
-      <h2 className="text-2xl font-bold mb-4">Submitted Requests</h2>
-      {submittedRequests.length > 0 ? (
-        <table className="min-w-full bg-white border border-gray-200">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border-b">Amount</th>
-              <th className="py-2 px-4 border-b">Purpose</th>
-              <th className="py-2 px-4 border-b">Description</th>
-              <th className="py-2 px-4 border-b">Status</th>
+      <h2 className="text-xl font-semibold mt-8 mb-4">Funding Requests</h2>
+      <table className="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th className="py-2">S. No.</th>
+            <th className="py-2">Investor Name</th>
+            <th className="py-2">Requested Amount</th>
+            <th className="py-2">Proposed Equity</th>
+            <th className="py-2">Purpose</th>
+            <th className="py-2">Status</th>
+            <th className="py-2">Counter Amount</th>
+            <th className="py-2">Counter Equity</th>
+            <th className="py-2">Negotiation Message</th>
+            <th className="py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {console.log(fundingRequests)}
+          {fundingRequests && fundingRequests.map((request,index) => (
+            <tr key={request._id}>
+              <td className="py-2">{index+1}</td>
+              <td className="py-2">{request.investor_id?.name || '-'}</td>
+              <td className="py-2">{request.requestedAmount}</td>
+              <td className="py-2">{request.proposedEquity}</td>
+              <td className="py-2">{request.purpose || '-'}</td>
+              <td className="py-2">{request.status}</td>
+              <td className="py-2">{request.counterAmount || '-'}</td>
+              <td className="py-2">{request.counterEquity || '-'}</td>
+              <td className="py-2">{request.negotiationMessage || '-'}</td>
+              <td className="py-2">
+                {request.status === 'countered' && (
+                  <button
+                    onClick={() => handleAcceptProposal(request._id)}
+                    className="px-4 py-2 text-white bg-green-500 rounded-md"
+                  >
+                    Accept Proposal
+                  </button>
+                )}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {submittedRequests.map((request, index) => (
-              <tr key={index}>
-                <td className="py-2 px-4 border-b">{request.amount}</td>
-                <td className="py-2 px-4 border-b">{request.purpose}</td>
-                <td className="py-2 px-4 border-b">{request.description}</td>
-                <td className="py-2 px-4 border-b">{request.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className="text-gray-600">No funding requests submitted yet.</p>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default FundingRequest;
+export default FundingRequests;

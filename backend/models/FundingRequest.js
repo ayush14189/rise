@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { purge } = require('../routes/userRoutes');
 
 const fundingRequestSchema = new mongoose.Schema(
   {
@@ -10,6 +11,10 @@ const fundingRequestSchema = new mongoose.Schema(
     investor_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Investor',
+    },
+    purpose:{
+      type: String,
+      required: true,
     },
     requestedAmount: {
       type: Number,
@@ -35,9 +40,6 @@ const fundingRequestSchema = new mongoose.Schema(
     negotiationMessage: {
       type: String,  // Optional message related to the negotiation
     },
-
-    
-  
   },
   { timestamps: true }
 );

@@ -5,10 +5,11 @@ exports.createFundingRequest = async (req, res) => {
   try {
     const fundingRequest = new FundingRequest({
       startup_id: req.body.startup_id,
-      amount_requested: req.body.amount_requested,
+      requestedAmount: req.body.requestedAmount,
+      proposedEquity: req.body.proposedEquity,
+      status:'pending',
       purpose: req.body.purpose,
-      funding_status: req.body.funding_status,
-      supporting_documents: req.body.supporting_documents,
+      
     });
     await fundingRequest.save();
     res.status(201).json(fundingRequest);
@@ -20,7 +21,7 @@ exports.createFundingRequest = async (req, res) => {
 // Get all funding requests
 exports.getFundingRequests = async (req, res) => {
   try {
-    const fundingRequests = await FundingRequest.find();
+    const fundingRequests = await FundingRequest.find().populate('startup_id investor_id');
     res.json(fundingRequests);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -33,7 +34,7 @@ exports.getFundingRequest = async (req, res) => {
     const { startupId } = req.params;  // Get the startupId from the request params
 
     // Fetch all funding requests that belong to the given startupId
-    const fundingRequests = await FundingRequest.find({ startupId });
+    const fundingRequests = await FundingRequest.find({ startupId }).populate('startup_id investor_id');
 
     if (fundingRequests.length === 0) {
       return res.status(404).json({ message: 'No funding requests found for this startup' });

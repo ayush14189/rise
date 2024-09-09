@@ -1,5 +1,5 @@
 const express = require("express");
-const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus } = require("../controllers");
+const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,updateFundingRequest,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus } = require("../controllers");
 const { protect } = require("../middleware");
 const { getResearchProjects } = require("../controllers/researchProjectController");
 
@@ -7,8 +7,10 @@ const router = express.Router();
 
 router.route("/startup").post(createStartup).get(protect, allUsers);
 router.route("/startup/:id").put(updateStartup);
-router.route("/fundingrequest").post(createFundingRequest).get(protect, getFundingRequests);
-router.route("/fundingrequest/:startupId").get( getFundingRequest);
+router.route("/funding-requests").post(createFundingRequest).get( getFundingRequests);
+router.route("/funding-requests/:startupId").get( getFundingRequest);
+router.route("/funding-request/:id").put(updateFundingRequest);
+
 router.route("/mentorshiprequest").post(createMentorshipRequest).get(protect, getMentorshipRequests);
 router.route("/collaborationrequest").post(createCollaborationRequest).get(protect, getCollaborationRequests);
 // router.route("/ipr").post(createIPR).get(protect, getIPRs);

@@ -7,7 +7,7 @@ import LandingPg from './pages/LandingPg'
 import Home from './pages/Home'
 import IprForm from './pages/Startup/IprForm'
 import ViewEditStartup from './pages/Startup/ViewEdit'
-import FundingRequest from './pages/Startup/FundingRequest'
+
 import MentorshipRequest from './pages/Startup/MentorshipRequests'
 import CollaborationRequest from './pages/Startup/Collaborations'
 import ResearchProjects from './pages/Researcher/ResearchProject'
@@ -24,6 +24,7 @@ import NewTrademarkApplications from './pages/IPRManager/NewTrademarkApplication
 import NewPatentApplications from './pages/IPRManager/NewPatentApplications'
 import PatentForm from './pages/Startup/Patents'
 import TrademarkForm from './pages/Startup/Trademarks'
+import StartupFundingRequests from './pages/Startup/FundingRequest'
 function App() {
     return (
         <Router>
@@ -33,7 +34,8 @@ function App() {
                 <Route path="/user" element={<Layout />}>
                     <Route index element={<Dashboard />} />
 
-                    <Route path="funding-requests" element={< FundingRequest/>} />
+                    <Route path="funding-requests" element={< 
+                    StartupFundingRequests/>} />
                     <Route path="EditStartup" element={<ViewEditStartup />} />
                     <Route path="mentorship-requests" element={<MentorshipRequest />} />
                     <Route path="collaborations" element={<CollaborationRequest />} />
