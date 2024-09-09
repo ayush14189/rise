@@ -316,12 +316,12 @@ const Signup = () => {
           <option value='Researcher'>Researcher</option>
           <option value='Investor'>Investor</option>
           <option value='Mentor'>Mentor</option>
-          <option value='StartUp'>Startup</option>
+          <option value='Startup'>Startup</option>
           <option value='IprManager'>IPR Manager</option>
           
       </Select>
       {localStorage.setItem("userType", userType)}
-      {userType==="PolicyMaker"?(<GovtAgency/>):(userType==="Incubator")?(<Incubator/>):(userType==="Investor")?(<Investor/>):(userType==="Mentor")?(<Mentor/>):(userType==="PublicUser")?(<PublicUser/>):(userType==="StartUp")?(<StartUp/>):(userType==="Researcher")?(<Researcher/>):(userType==="IprManager")?(<IprManager/>):""}
+      {userType==="PolicyMaker"?(<GovtAgency/>):(userType==="Incubator")?(<Incubator/>):(userType==="Investor")?(<Investor/>):(userType==="Mentor")?(<Mentor/>):(userType==="PublicUser")?(<PublicUser/>):(userType==="Startup")?(<StartUp/>):(userType==="Researcher")?(<Researcher/>):(userType==="IprManager")?(<IprManager/>):""}
 
     </Stack>
   );

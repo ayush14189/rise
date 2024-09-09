@@ -13,7 +13,7 @@ export default function Dashboard() {
                 .then(response => response.json())
                 .then(data => {
 					console.log(data)
-                    localStorage.setItem('userInfo', JSON.stringify(data));
+                    localStorage.setItem('userInfo', JSON.stringify(data[0]));
                 })
                 .catch(error => {
                     console.error('Error fetching user info:', error);

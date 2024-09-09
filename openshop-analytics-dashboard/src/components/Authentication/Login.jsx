@@ -66,7 +66,7 @@ const Login = () => {
         variant: !data.success ? "left-accent" : "solid",
       });
 
-      if (data) {
+      if (data.success) {
         localStorage.setItem("user", JSON.stringify(data));
         
         setLoading(false);

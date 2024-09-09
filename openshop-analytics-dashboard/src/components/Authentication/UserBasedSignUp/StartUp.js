@@ -20,7 +20,7 @@ const StartUp = () => {
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
-    userType: "startup",
+    userType: "Startup",
     email: "",
     startup_name: "",
     founder_name: "",
