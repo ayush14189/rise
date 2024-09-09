@@ -1,5 +1,5 @@
 const express = require("express");
-const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId } = require("../controllers");
+const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus } = require("../controllers");
 const { protect } = require("../middleware");
 const { getResearchProjects } = require("../controllers/researchProjectController");
 
@@ -21,6 +21,8 @@ router.route("/collaboration-requests").post(createCollaborationRequest).get(get
 router.route("/investor/:userId").get(getInvestorByUserId);
 router.route("/researcher/:userId").get(getResearcherByUserId);
 router.route("/startup/:userId").get(getStartupByUserId);
+router.route("/patents").post(createPatent).get(getPatents);
+router.route("/trademarks").post(createTrademark).get(getTrademarks);
 const iprManagerController = require('../controllers/iprManagerController'); // Adjust the path according to your project structure
 
 router.post('/iprmanager', iprManagerController.signupIprManager);
@@ -30,16 +32,16 @@ router.post('/:id/approve', iprManagerController.approveIPR);
 router.post('/:id/reject', iprManagerController.rejectIPR);
 
 
-// Define routes for Trademarks
-router.get('/trademarks', iprManagerController.getTrademarks);
-router.post('/trademarks/:id/approve', iprManagerController.approveTrademark);
-router.post('/trademarks/:id/reject', iprManagerController.rejectTrademark);
+// // Define routes for Trademarks
+// router.get('/trademarks', iprManagerController.getTrademarks);
+// router.post('/trademarks/:id/approve', iprManagerController.approveTrademark);
+// router.post('/trademarks/:id/reject', iprManagerController.rejectTrademark);
 
 
 // Define routes for Patents
-router.get('/patents', iprManagerController.getPatents);
-router.post('/patents/:id/approve', iprManagerController.approvePatent);
-router.post('/patents/:id/reject', iprManagerController.rejectPatent);
+// router.get('/patents', iprManagerController.getPatents);
+// router.post('/patents/:id/approve', iprManagerController.approvePatent);
+// router.post('/patents/:id/reject', iprManagerController.rejectPatent);
 
 
 // Define routes for Dashboard

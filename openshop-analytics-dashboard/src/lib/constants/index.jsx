@@ -27,9 +27,15 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineCube />
     },
     {
-        key: 'IprForm',
-        label: 'IPR Form',
-        path: 'IprForm',
+        key: 'patents',
+        label: 'Patents',
+        path: 'patents',
+        icon: <HiOutlineDocumentAdd />
+    },
+    {
+        key: 'trademarks',
+        label: 'Trademarks',
+        path: 'trademarks',
         icon: <HiOutlineDocumentAdd />
     },
     {
