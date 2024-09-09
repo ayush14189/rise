@@ -1,4 +1,4 @@
-const Investment = require('../models/Investment');
+const {Investment} = require('../models');
 
 // Create new investment
 exports.createInvestment = async (req, res) => {
