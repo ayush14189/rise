@@ -72,3 +72,58 @@ exports.deleteFundingRequest = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+const Investment = require('../models/Investment');
+
+// Accept funding request
+exports.acceptFundingRequest = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const fundingRequest = await FundingRequest.findByIdAndUpdate(
+      id,
+      { status: 'active' },
+      { new: true }
+    );
+
+    if (!fundingRequest) {
+      return res.status(404).json({ message: 'Funding request not found' });
+    }
+
+    // Create a new investment record
+    const newInvestment = new Investment({
+      investor_id: fundingRequest.investor_id,
+      startupName: fundingRequest.startup_id,
+      amount: fundingRequest.requestedAmount,
+      investmentDate: new Date(),
+      equityPercentage: fundingRequest.proposedEquity,
+    });
+
+    await newInvestment.save();
+
+    res.status(200).json(fundingRequest);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Counter funding request
+exports.counterFundingRequest = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { counterAmount, counterEquity, investor_id } = req.body;
+
+    const fundingRequest = await FundingRequest.findByIdAndUpdate(
+      id,
+      { counterAmount, counterEquity, investor_id, status: 'countered' },
+      { new: true }
+    );
+
+    if (!fundingRequest) {
+      return res.status(404).json({ message: 'Funding request not found' });
+    }
+
+    res.status(200).json(fundingRequest);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

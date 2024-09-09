@@ -35,44 +35,7 @@ const GovtAgency = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleUploadFile = async (e) => {
-    setLoading(true);
-
-    if (!e.target.files[0]) {
-      setLoading(false);
-      return toast({
-        title: "Please select a file",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-right",
-      });
-    }
-
-    const data = new FormData();
-    data.append("file", e.target.files[0]);
-    data.append("upload_preset", "gov-agency-docs");
-    data.append("cloud_name", "your_cloudinary_cloud_name");
-
-    try {
-      const response = await fetch(
-        "https://api.cloudinary.com/v1_1/your_cloudinary_cloud_name/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const json = await response.json();
-      setCredentials({
-        ...credentials,
-        [e.target.name]: json.secure_url,
-      });
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error(error);
-    }
-  };
+  
 
   const submitHandler = async () => {
     setLoading(true);

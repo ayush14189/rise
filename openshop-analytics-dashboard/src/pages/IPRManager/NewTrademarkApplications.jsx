@@ -8,7 +8,7 @@ const NewTrademarkApplications = () => {
 
   useEffect(() => {
     // Fetch trademark applications from the backend
-    axios.get('http://localhost:5000/api/user/ipr/trademarks')
+    axios.get('http://localhost:5000/api/user/trademarks')
       .then(response => {
         setApplications(response.data);
       })
@@ -55,7 +55,7 @@ const NewTrademarkApplications = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead className="bg-gray-100">
             <tr>
-              <th className="py-2 px-4 border-b">Trademark ID</th>
+              <th className="py-2 px-4 border-b">Trademark Number</th>
               <th className="py-2 px-4 border-b">Title</th>
               <th className="py-2 px-4 border-b">Owner</th>
               <th className="py-2 px-4 border-b">Status</th>
@@ -65,7 +65,7 @@ const NewTrademarkApplications = () => {
           <tbody>
             {applications.map(application => (
               <tr key={application._id} className="hover:bg-gray-50">
-                <td className="py-2 px-4 border-b">{application._id}</td>
+                <td className="py-2 px-4 border-b">{application.trademarkNumber}</td>
                 <td className="py-2 px-4 border-b">{application.title}</td>
                 <td className="py-2 px-4 border-b">{application.owner}</td>
                 <td className="py-2 px-4 border-b">

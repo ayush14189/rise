@@ -25,12 +25,7 @@ const investmentSchema = mongoose.Schema(
       type: Number, // The percentage of equity acquired in exchange for the investment
       required: true,
     },
-    country: {
-      type: String, // Country where the startup operates
-    },
-    industry: {
-      type: String, // Industry or sector the startup is in (e.g., Fintech, HealthTech)
-    },
+    
   },
   { timestamps: true }
 );

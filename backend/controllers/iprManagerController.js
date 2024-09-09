@@ -166,6 +166,7 @@ exports.approvePatent = async (req, res) => {
     await application.save();
     res.json(application);
   } catch (error) {
+    console.error(error);
     res.status(500).send('Server Error');
   }
 };
@@ -184,6 +185,7 @@ exports.rejectPatent = async (req, res) => {
     await application.save();
     res.json(application);
   } catch (error) {
+    console.error(error);
     res.status(500).send('Server Error');
   }
 };

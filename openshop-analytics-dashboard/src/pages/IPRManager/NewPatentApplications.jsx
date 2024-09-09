@@ -5,17 +5,20 @@ import axios from 'axios';
 const NewPatentApplications = () => {
   const [applications, setApplications] = useState([]);
 
-
+  
   useEffect(() => {
-    // Fetch patent applications from the backend
-    axios.get('http://localhost:5000/api/user/ipr/patents')
-      .then(response => {
-        setApplications(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the patent applications!', error);
-      });
+    fetchPatents();
   }, []);
+
+  const fetchPatents = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/user/patents');
+      const data = await response.json();
+      setApplications(data);
+    } catch (error) {
+      console.error('Error fetching patents:', error);
+    }
+  };
 
 
   const handleApprove = (applicationId) => {
@@ -55,7 +58,7 @@ const NewPatentApplications = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead className="bg-gray-100">
             <tr>
-              <th className="py-2 px-4 border-b">Patent ID</th>
+              <th className="py-2 px-4 border-b">Patent Number</th>
               <th className="py-2 px-4 border-b">Title</th>
               <th className="py-2 px-4 border-b">Inventor</th>
               <th className="py-2 px-4 border-b">Status</th>
@@ -63,9 +66,9 @@ const NewPatentApplications = () => {
             </tr>
           </thead>
           <tbody>
-            {applications.map(application => (
+            {applications.map((application,index) => (
               <tr key={application._id} className="hover:bg-gray-50">
-                <td className="py-2 px-4 border-b">{application._id}</td>
+                <td className="py-2 px-4 border-b">{application.patentNumber}</td>
                 <td className="py-2 px-4 border-b">{application.title}</td>
                 <td className="py-2 px-4 border-b">{application.inventor}</td>
                 <td className="py-2 px-4 border-b">

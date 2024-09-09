@@ -3,12 +3,13 @@ const  {createStartup,updateStartup,getStartup,getStartups,getStartupByUserId} =
 const {registerInvestor,updateInvestor,getInvestor,getInvestorByUserId} = require("./investorController");
 const {signupResearcher,getResearcherByUserId} = require("./researcherController");
 const {signupGovtAgency} = require("./govtAgencyController");
-const {createFundingRequest, updateFundingRequest, getFundingRequests,getFundingRequest,deleteFundingRequest} = require("./FundingRequestController");
+const {createFundingRequest, updateFundingRequest, getFundingRequests,getFundingRequest,deleteFundingRequest,acceptFundingRequest,counterFundingRequest} = require("./FundingRequestController");
 const {createProgressTracking, updateProgressTracking, getProgressTrackings,getProgressTracking,deleteProgressTracking} = require("./ProgressTrackerController");
 const {createMentorshipRequest, updateMentorshipRequest, getMentorshipRequests,getMentorshipRequest,deleteMentorshipRequest} = require("./MentorshipRequestController");
 const {createIPR, updateIPR, getIPRs,getIPR,deleteIPR} = require("./iprManagerController");
 const {createPatent,getPatentById,getPatents,updatePatentStatus} = require("./PatentController");
 const {createResearchProject}=require("./researchProjectController")
+
 const {
   accessChat,
   fetchChats,
@@ -22,8 +23,9 @@ const { promptMessage } = require("./promptControllers");
 const { generateImage } = require("./imageControllers");
 const { createCollaborationRequest, getCollaborationRequests,getCollaborationRequest,updateCollaborationRequest,deleteCollaborationRequest } = require("./CollaborationRequest");
 const {createTrademark,getTrademarks,getTrademarkById,updateTrademarkStatus}=require("./trademarkcontroller")
+const { createInvestment}=require("./investements")
 module.exports = {
-  
+
   authUser,
   allUsers,
   createResearchProject,
@@ -54,6 +56,8 @@ module.exports = {
   getFundingRequests,
   getFundingRequest,
   deleteFundingRequest,
+  acceptFundingRequest,
+  counterFundingRequest,
 
   createProgressTracking,
   updateProgressTracking,
@@ -89,9 +93,11 @@ module.exports = {
   updateInvestor,
   getInvestor,
   getInvestorByUserId,
-  
+
   createTrademark,
   getTrademarks,
   getTrademarkById,
-  updateTrademarkStatus
+  updateTrademarkStatus,
+
+  createInvestment
 };

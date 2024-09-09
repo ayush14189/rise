@@ -8,7 +8,6 @@ const FundingRequests = () => {
     proposedEquity: '',
     purpose: '',
     startup_id: startup._id,
-
   });
   
   const [fundingRequests, setFundingRequests] = useState([]);
@@ -68,8 +67,9 @@ const FundingRequests = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-        
-      }, body : JSON.stringify({ status: 'accepted' })});
+        },
+        body: JSON.stringify({ status: 'accepted' }),
+      });
 
       if (response.ok) {
         const updatedRequest = await response.json();
@@ -87,84 +87,87 @@ const FundingRequests = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-xl font-semibold mb-4">Submit New Funding Request</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Requested Amount</label>
+    <div className="max-w-6xl mx-auto p-10 bg-gradient-to-br from-white to-gray-100 rounded-lg shadow-xl mt-12">
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-700 tracking-wide">
+        Submit New Funding Request
+      </h2>
+      <form onSubmit={handleSubmit} className="mb-10">
+        <div className="mb-8">
+          <label className="block text-sm font-medium mb-3 text-gray-700">Requested Amount</label>
           <input
             type="number"
             name="requestedAmount"
             value={formData.requestedAmount}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out hover:shadow-md"
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Proposed Equity (%)</label>
+        <div className="mb-8">
+          <label className="block text-sm font-medium mb-3 text-gray-700">Proposed Equity (%)</label>
           <input
             type="number"
             name="proposedEquity"
             value={formData.proposedEquity}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out hover:shadow-md"
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Purpose</label>
+        <div className="mb-8">
+          <label className="block text-sm font-medium mb-3 text-gray-700">Purpose</label>
           <input
             type="text"
             name="purpose"
             value={formData.purpose}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out hover:shadow-md"
             required
           />
         </div>
         <button
           type="submit"
-          className="px-4 py-2 text-white bg-blue-500 rounded-md"
+          className="px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-700 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
         >
           Submit
         </button>
       </form>
 
-      <h2 className="text-xl font-semibold mt-8 mb-4">Funding Requests</h2>
-      <table className="min-w-full bg-white">
-        <thead>
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-700 tracking-wide">
+        Funding Requests Sent
+      </h2>
+      <table className="min-w-full bg-white rounded-lg shadow-md">
+        <thead className="bg-gradient-to-r from-gray-200 to-gray-300">
           <tr>
-            <th className="py-2">S. No.</th>
-            <th className="py-2">Investor Name</th>
-            <th className="py-2">Requested Amount</th>
-            <th className="py-2">Proposed Equity</th>
-            <th className="py-2">Purpose</th>
-            <th className="py-2">Status</th>
-            <th className="py-2">Counter Amount</th>
-            <th className="py-2">Counter Equity</th>
-            <th className="py-2">Negotiation Message</th>
-            <th className="py-2">Actions</th>
+            <th className="py-4 px-6 font-medium text-gray-700">S. No.</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Investor Name</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Requested Amount</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Proposed Equity</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Purpose</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Status</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Counter Amount</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Counter Equity</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Negotiation Message</th>
+            <th className="py-4 px-6 font-medium text-gray-700">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {console.log(fundingRequests)}
-          {fundingRequests && fundingRequests.map((request,index) => (
-            <tr key={request._id}>
-              <td className="py-2">{index+1}</td>
-              <td className="py-2">{request.investor_id?.name || '-'}</td>
-              <td className="py-2">{request.requestedAmount}</td>
-              <td className="py-2">{request.proposedEquity}</td>
-              <td className="py-2">{request.purpose || '-'}</td>
-              <td className="py-2">{request.status}</td>
-              <td className="py-2">{request.counterAmount || '-'}</td>
-              <td className="py-2">{request.counterEquity || '-'}</td>
-              <td className="py-2">{request.negotiationMessage || '-'}</td>
-              <td className="py-2">
+          {fundingRequests && fundingRequests.map((request, index) => (
+            <tr key={request._id} className="border-t border-gray-200 hover:bg-gray-50 transition ease-in-out duration-200">
+              <td className="py-4 px-6 text-gray-700">{index + 1}</td>
+              <td className="py-4 px-6 text-gray-700">{request.investor_id?.name || '-'}</td>
+              <td className="py-4 px-6 text-gray-700">{request.requestedAmount}</td>
+              <td className="py-4 px-6 text-gray-700">{request.proposedEquity}</td>
+              <td className="py-4 px-6 text-gray-700">{request.purpose || '-'}</td>
+              <td className="py-4 px-6 text-gray-700">{request.status}</td>
+              <td className="py-4 px-6 text-gray-700">{request.counterAmount || '-'}</td>
+              <td className="py-4 px-6 text-gray-700">{request.counterEquity || '-'}</td>
+              <td className="py-4 px-6 text-gray-700">{request.negotiationMessage || '-'}</td>
+              <td className="py-4 px-6">
                 {request.status === 'countered' && (
                   <button
                     onClick={() => handleAcceptProposal(request._id)}
-                    className="px-4 py-2 text-white bg-green-500 rounded-md"
+                    className="px-4 py-2 font-semibold text-white bg-gradient-to-r from-green-500 to-green-700 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
                   >
                     Accept Proposal
                   </button>

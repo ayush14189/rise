@@ -187,10 +187,16 @@ export const RESEARCHER_SIDEBAR_LINKS = [
     //     icon: <MdAttachMoney />
     // },
     {
-        key: 'resipr',
-        label: 'Intellectual Property Rights',
+        key: 'respatents',
+        label: 'Patents',
         path: 'patents',
-        icon: <HiOutlineChartSquareBar />
+        icon: <HiOutlineDocumentText />
+    },
+    {
+        key: 'restrademarks',
+        label: 'Trademarks',
+        path: 'trademarks',
+        icon: <HiOutlineDocumentText />
     }
 ]
 

@@ -10,4 +10,5 @@ const Investor = require("./Investor");
 const GovtAgency = require("./GovtAgency");
 const CollaborationRequest = require("./CollaborationRequest");
 
+
 module.exports = { User, Chat, Message,Researcher,Startup,Investor,GovtAgency, ResearchProject, Patent, Trademark };

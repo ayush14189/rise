@@ -1,5 +1,5 @@
 const express = require("express");
-const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,updateFundingRequest,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus } = require("../controllers");
+const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,updateFundingRequest,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus,createInvestment,acceptFundingRequest,counterFundingRequest } = require("../controllers");
 const { protect } = require("../middleware");
 const { getResearchProjects } = require("../controllers/researchProjectController");
 
@@ -24,32 +24,35 @@ router.route("/investor/:userId").get(getInvestorByUserId);
 router.route("/researcher/:userId").get(getResearcherByUserId);
 router.route("/startup/:userId").get(getStartupByUserId);
 router.route("/patents").post(createPatent).get(getPatents);
+router.route("/investments").post(createInvestment);
+router.route("funding-requests/:id/counter").put(counterFundingRequest);
+router.route("funding-requests/:id/accept").put(acceptFundingRequest);
 router.route("/trademarks").post(createTrademark).get(getTrademarks);
 const iprManagerController = require('../controllers/iprManagerController'); // Adjust the path according to your project structure
 
 router.post('/iprmanager', iprManagerController.signupIprManager);
 // Define routes for IPR
-router.get('/', iprManagerController.getIPRs);
-router.post('/:id/approve', iprManagerController.approveIPR);
-router.post('/:id/reject', iprManagerController.rejectIPR);
+// router.get('/', iprManagerController.getIPRs);
+// router.post('/:id/approve', iprManagerController.approveIPR);
+// router.post('/:id/reject', iprManagerController.rejectIPR);
 
 
 // // Define routes for Trademarks
 // router.get('/trademarks', iprManagerController.getTrademarks);
-// router.post('/trademarks/:id/approve', iprManagerController.approveTrademark);
-// router.post('/trademarks/:id/reject', iprManagerController.rejectTrademark);
+router.post('/ipr/trademarks/:id/approve', iprManagerController.approveTrademark);
+router.post('/ipr/trademarks/:id/reject', iprManagerController.rejectTrademark);
 
 
 // Define routes for Patents
 // router.get('/patents', iprManagerController.getPatents);
-// router.post('/patents/:id/approve', iprManagerController.approvePatent);
-// router.post('/patents/:id/reject', iprManagerController.rejectPatent);
+router.route('/ipr/patents/:id/approve').post(iprManagerController.approvePatent);
+router.route('/ipr/patents/:id/reject').post(iprManagerController.rejectPatent);
 
 
 // Define routes for Dashboard
-router.get('/dashboard/applications-by-month', iprManagerController.getApplicationsByMonth);
-router.get('/dashboard/total-applications', iprManagerController.getTotalApplications);
-router.get('/dashboard/applications-by-status', iprManagerController.getApplicationsByStatus);
+router.get('/ipr/dashboard/applications-by-month', iprManagerController.getApplicationsByMonth);
+router.get('/ipr/dashboard/total-applications', iprManagerController.getTotalApplications);
+router.get('/ipr/dashboard/applications-by-status', iprManagerController.getApplicationsByStatus);
  // Both request supported on the same route
 router.post("/login", authUser);
 

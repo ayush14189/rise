@@ -43,9 +43,9 @@ const IPRDashboard = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">IPR Managers Dashboard</h2>
      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {/* IPR Line Chart */}
-        <div className="shadow-lg rounded-lg p-6 bg-white">
+        {/* <div className="shadow-lg rounded-lg p-6 bg-white">
           <h3 className="text-xl font-semibold mb-4 text-blue-600">IPR Applications Over Time</h3>
           <LineChart width={400} height={300} data={iprMonthlyData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -55,7 +55,7 @@ const IPRDashboard = () => {
             <Legend />
             <Line type="monotone" dataKey="count" stroke="#8884d8" />
           </LineChart>
-        </div>
+        </div> */}
 
 
         {/* Trademark Bar Chart */}
@@ -99,11 +99,11 @@ const IPRDashboard = () => {
       {/* Numerical Statistics */}
       <div className="mt-8">
         {/* <h3 className="text-2xl font-semibold mb-4 text-center text-gray-700">Numerical Statistics</h3> */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="shadow-lg rounded-lg p-6 bg-blue-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* <div className="shadow-lg rounded-lg p-6 bg-blue-100">
             <h4 className="text-lg font-semibold text-blue-700">Total IPR Applications</h4>
             <p className="text-3xl font-bold text-blue-900">{totalApplications.totalIPRs}</p>
-          </div>
+          </div> */}
           <div className="shadow-lg rounded-lg p-6 bg-green-100">
             <h4 className="text-lg font-semibold text-green-700">Total Trademark Applications</h4>
             <p className="text-3xl font-bold text-green-900">{totalApplications.totalTrademarks}</p>
@@ -119,13 +119,13 @@ const IPRDashboard = () => {
       {/* Applications by Status */}
       <div className="mt-8">
         {/* <h3 className="text-2xl font-semibold mb-4 text-center text-gray-700">Applications by Status</h3> */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="shadow-lg rounded-lg p-6 bg-yellow-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* <div className="shadow-lg rounded-lg p-6 bg-yellow-100">
             <h4 className="text-lg font-semibold text-yellow-700">IPR Applications by Status</h4>
             {applicationsByStatus.iprStatusCounts && applicationsByStatus.iprStatusCounts.map(status => (
               <p key={status._id} className="text-xl text-yellow-900">{status._id}: {status.count}</p>
             ))}
-          </div>
+          </div> */}
           <div className="shadow-lg rounded-lg p-6 bg-red-100">
             <h4 className="text-lg font-semibold text-red-700">Trademark Applications by Status</h4>
             {applicationsByStatus.trademarkStatusCounts && applicationsByStatus.trademarkStatusCounts.map(status => (
