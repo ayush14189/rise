@@ -19,13 +19,74 @@ This README provides an overview of the project, including team details, relevan
 
 ## Project Links
 
-- *Final SIH Presentation:* [Final SIH Presentation](https://github.com/LeoAB03/SIH_INTERNAL_ROUND_2_RISE/blob/main/files/Team_RISE_MAIN_SIH.pdf)
+- *Final SIH Presentation:* [Final SIH Presentation]()
 - *Video Demonstration:* [Watch Video]()
 - *Live Deployment:* [Deploy]()We will deploy it shortly
 - *Source Code:* [GitHub Repository]()
 - *Additional Resources:* [Other Relevant Links]()
+## Installation and Setup
+
+### 1. *Clone the Repository*
+
+   ```bash
+   git clone https://github.com/LeoAB03/SIH_INTERNAL_ROUND_1_RISE
+   cd code/healthcare-master
+   ```
+   
+### 2. *Set Up Environment Variables*
+
+   Create a ```.env``` file in the root directory and add the following variables:
+
+   ``` bash
+   MONGO_URI=<your-mongodb-connection-string>
+   PORT=5000 # or any port number of your choice
+   ```
+   
+### 3. *Install Server Dependencies*
+
+- Navigate to the backend (or server) directory and run:
+
+   ```bash
+   cd backend
+   npm install
+   ```
+   
+
+### 4. *Run the Server*
+
+   Start the backend server:
+
+   ```bash
+   npm run dev
+   ```
+
+   This command will run the server using ```nodemon``` (if configured) and listen on the port defined in your ```.env``` file.
+
+### 5. *Install Client Dependencies*
+
+   Open a new terminal window, navigate to the frontend (or client) directory, and run:
+
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+### 6. *Run the Client*
+
+   Start the React client:
+
+   ```bash
+   npm start
+   ```
+   
+   This command will run the React app on ```http://localhost:3000``` by default.
+
+### 7. *Open in Browser*
+
+   Open your web browser and go to ```http://localhost:3000``` to see the application running locally.
 
 ## Background
+
 
 Gujarat has established itself as a pioneer in fostering innovation and entrepreneurship. The state houses numerous research institutions, start-ups, and innovation hubs that drive economic growth and technological advancement. However, the current systems for monitoring research activities, managing intellectual property rights (IPR), tracking innovation development, and overseeing start-up growth are fragmented and inefficient. The information is scattered across different organizations and departments, leading to difficulties in data accessibility, transparency, resource allocation, and overall management.
 
