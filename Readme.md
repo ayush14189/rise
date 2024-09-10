@@ -29,8 +29,8 @@ This README provides an overview of the project, including team details, relevan
 ### 1. *Clone the Repository*
 
    ```bash
-   git clone https://github.com/LeoAB03/SIH_INTERNAL_ROUND_1_RISE
-   cd code/healthcare-master
+   git clone https://github.com/Krishsh93/sih
+   cd backend
    ```
    
 ### 2. *Set Up Environment Variables*
