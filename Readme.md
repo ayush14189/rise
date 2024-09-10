@@ -57,7 +57,8 @@ This README provides an overview of the project, including team details, relevan
    Start the backend server:
 
    ```bash
-   npm run dev
+   npm run server
+
    ```
 
    This command will run the server using ```nodemon``` (if configured) and listen on the port defined in your ```.env``` file.
