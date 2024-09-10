@@ -67,7 +67,7 @@ This README provides an overview of the project, including team details, relevan
    Open a new terminal window, navigate to the frontend (or client) directory, and run:
 
    ```bash
-   cd frontend
+   cd open 
    npm install
    ```
 
