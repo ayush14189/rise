@@ -5,8 +5,8 @@ const MentorshipRequest = () => {
   // Mock list of mentors
   const mockMentors = [
     { id: 1, name: 'Dr. Sarah Johnson', expertise: 'AI & Machine Learning' },
-    { id: 2, name: 'Mr. John Doe', expertise: 'Business Development' },
-    { id: 3, name: 'Ms. Emily Davis', expertise: 'Product Management' },
+    { id: 2, name: 'Mr. Krish Sharma', expertise: 'Business Development' },
+    { id: 3, name: 'Ms. Mahika', expertise: 'Product Management' },
   ];
 
 

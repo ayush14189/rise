@@ -65,7 +65,7 @@ export default function FundingRequsts() {
         </thead>
         <tbody>
           {console.log(fundingRequests)}
-          {fundingRequests && fundingRequests.map((request,index) => (
+          {fundingRequests.length>0 && fundingRequests.map((request,index) => (
             <tr key={request._id}>
               <td className="py-2">{index+1}</td>
               <td className="py-2">{request.investor_id?.name || '-'}</td>

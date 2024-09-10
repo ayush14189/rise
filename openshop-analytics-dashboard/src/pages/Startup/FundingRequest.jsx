@@ -152,7 +152,7 @@ const FundingRequests = () => {
           </tr>
         </thead>
         <tbody>
-          {fundingRequests && fundingRequests.map((request, index) => (
+          {fundingRequests.length>0 && fundingRequests?.map((request, index) => (
             <tr key={request._id} className="border-t border-gray-200 hover:bg-gray-50 transition ease-in-out duration-200">
               <td className="py-4 px-6 text-gray-700">{index + 1}</td>
               <td className="py-4 px-6 text-gray-700">{request.investor_id?.name || '-'}</td>

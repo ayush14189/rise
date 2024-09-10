@@ -124,7 +124,7 @@ const FundingRequests = () => {
         </thead>
         <tbody>
           {console.log(fundingRequests)}
-          {fundingRequests.map((request, index) => (
+          {fundingRequests.length>0 && fundingRequests.map((request, index) => (
             <tr key={index}>
               {console.log(request.startup_id.
 startup_name

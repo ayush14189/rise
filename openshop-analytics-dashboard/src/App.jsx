@@ -24,7 +24,7 @@ import NewTrademarkApplications from './pages/IPRManager/NewTrademarkApplication
 import NewPatentApplications from './pages/IPRManager/NewPatentApplications'
 import PatentForm from './pages/Startup/Patents'
 import TrademarkForm from './pages/Startup/Trademarks'
-import StartupFundingRequests from './pages/Startup/FundingRequest'
+import StartupFundingRequest from "./pages/Startup/FundingRequest"
 import ResearcherPatents from './pages/Researcher/Patents'
 import ResearcherTrademarks from './pages/Researcher/Trademarks'
 function App() {
@@ -36,8 +36,7 @@ function App() {
                 <Route path="/user" element={<Layout />}>
                     <Route index element={<Dashboard />} />
 
-                    <Route path="funding-requests" element={< 
-                    StartupFundingRequests/>} />
+                    <Route path="funding-requests" element={<StartupFundingRequest/>} />
                     <Route path="EditStartup" element={<ViewEditStartup />} />
                     <Route path="mentorship-requests" element={<MentorshipRequest />} />
                     <Route path="collaborations" element={<CollaborationRequest />} />
