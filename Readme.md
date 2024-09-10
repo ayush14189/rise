@@ -88,9 +88,9 @@ This README provides an overview of the project, including team details, relevan
 
 ## Background
 
-
+<img src="pics_01/1.jpg" alt="Chatbot Screenshot" width="1200"/>
 Gujarat has established itself as a pioneer in fostering innovation and entrepreneurship. The state houses numerous research institutions, start-ups, and innovation hubs that drive economic growth and technological advancement. However, the current systems for monitoring research activities, managing intellectual property rights (IPR), tracking innovation development, and overseeing start-up growth are fragmented and inefficient. The information is scattered across different organizations and departments, leading to difficulties in data accessibility, transparency, resource allocation, and overall management.
-
+<img src="pics_01/2.jpg" alt="Chatbot Screenshot" width="1200"/>
 ### Challenges:
 - Fragmented systems across various departments.
 - Lack of data accessibility and transparency.
@@ -103,7 +103,7 @@ The proposed solution is a **centralized web platform** designed to streamline t
 ---
 
 ## Detailed Description of Features
-
+<img src="pics_01/3.jpg" alt="Chatbot Screenshot" width="1200"/>
 ### 1. **Unified Data Repository**
 A centralized database where information related to research projects, patents, innovations, and start-up activities will be stored. The system ensures that data is easily accessible to authorized users and eliminates fragmentation.
 - **Benefits**: Data consolidation, easy access for all stakeholders.
@@ -115,7 +115,7 @@ Provides tools for stakeholders to track the progress of research, innovations, 
 - **Benefits**: Real-time tracking, greater transparency.
 
 ---
-
+<img src="pics_01/4.jpg" alt="Chatbot Screenshot" width="1200"/>
 ### 3. **Efficient Resource Allocation**
 The platform provides mechanisms for allocating resources like funding and mentorship based on real-time data. It uses data insights to optimize resource distribution across projects and start-ups.
 - **Benefits**: Better utilization of resources, optimized decision-making.
@@ -145,7 +145,7 @@ The platform offers advanced analytics and reporting tools, enabling policymaker
 - **Benefits**: Data-driven decision-making, policy formulation support.
 
 ---
-
+<img src="pics_01/5.jpg" alt="Chatbot Screenshot" width="1200"/>
 ## Target Users
 
 The application is designed for a diverse range of users, each benefiting from its unique functionalities:
