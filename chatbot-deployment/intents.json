@@ -1,0 +1,512 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "items",
+      "patterns": [
+        "Which items do you have?",
+        "What kinds of items are there?",
+        "What do you sell?"
+      ],
+      "responses": [
+        "We sell coffee and tea",
+        "We have coffee and tea"
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Paypal?",
+        "Are you cash only?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard and Paypal",
+        "We accept most major credit cards, and Paypal"
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "When do I get my delivery?"
+      ],
+      "responses": [
+        "Delivery takes 2-4 days",
+        "Shipping takes 2-4 days"
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?"
+      ],
+      "responses": [
+        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college? Bison."
+      ]
+    },
+    {
+      "tag": "startup_rules",
+      "patterns": [
+        "What are the startup rules in India?",
+        "Can you tell me about startup regulations?",
+        "What are the laws for startups?",
+        "Rules for startups in India",
+        "Startup laws in India"
+      ],
+      "responses": [
+        "Startup regulations in India include eligibility criteria, tax benefits, and regulatory compliance. Consider Startup India registration to avail benefits like tax exemptions and funding assistance.",
+        "Startup laws in India include the Companies Act 2013, Startup India Action Plan, and intellectual property rules.",
+        "Make sure to protect your startup's intellectual property and comply with tax and regulatory laws."
+      ]
+    },
+    {
+      "tag": "startup_india_pillars",
+      "patterns": [
+        "What are the three pillars of Startup India?",
+        "Tell me about the pillars of Startup India",
+        "Startup India pillars",
+        "What supports are provided by Startup India?"
+      ],
+      "responses": [
+        "The three pillars of Startup India are: Simplification and Support, Funding Support, and Industry-Academia Partnership.",
+        "Startup India provides simplified regulations, mentorship, funding access, and collaboration between startups and academia.",
+        "The pillars of Startup India ensure a business-friendly environment with support for innovation and growth."
+      ]
+    },
+    {
+      "tag": "startup_registration",
+      "patterns": [
+        "How do I register my startup in India?",
+        "Can you guide me through startup registration?",
+        "What are the steps for registering a startup?",
+        "Startup registration in India"
+      ],
+      "responses": [
+        "Here are the steps to register a startup in India: 1. Choose Business Structure 2. Obtain DIN 3. Acquire DSC 4. Reserve Name with RoC 5. File Incorporation Documents 6. Apply for PAN and TAN 7. GST Registration.",
+        "Registering your startup requires you to file incorporation documents with the Registrar of Companies and apply for GST if applicable.",
+        "You can register your startup by following these 7 steps, ensuring compliance with all legal requirements."
+      ]
+    },
+    {
+      "tag": "intellectual_property",
+      "patterns": [
+        "How do I protect my intellectual property?",
+        "What IP laws are there for startups?",
+        "How can I secure my brand?",
+        "Intellectual property protection for startups"
+      ],
+      "responses": [
+        "To protect your startup’s intellectual property in India, apply for patents, trademarks, and copyrights. The government offers expedited patent examinations for startups.",
+        "You can protect your IP with patents for inventions, trademarks for brand identity, and copyrights for creative works.",
+        "Ensure you register for patents, trademarks, and copyrights to safeguard your brand and products."
+      ]
+    },
+    {
+      "tag": "regulatory_compliance",
+      "patterns": [
+        "What are the regulatory compliance requirements for startups?",
+        "What compliance laws do startups need to follow?",
+        "What regulations apply to startups?",
+        "Compliance rules for startups"
+      ],
+      "responses": [
+        "Startups must comply with various regulatory requirements such as GST, income tax, labor laws, and environmental regulations.",
+        "Ensure your startup follows labor laws, pays taxes like GST and income tax, and meets industry-specific regulations.",
+        "Compliance with labor laws, tax regulations, and environmental standards is essential for smooth startup operations."
+      ]
+    },
+    {
+      "tag": "funding_schemes",
+      "patterns": [
+        "What funding schemes are available for startups?",
+        "How can startups get funding?",
+        "Startup funding schemes in India",
+        "Funding support for startups"
+      ],
+      "responses": [
+        "Funding schemes available for startups in India include the Startup India Seed Fund, Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE), and SIDBI’s Fund of Funds.",
+        "Startup India offers multiple funding schemes to support early-stage and growth-stage startups.",
+        "You can access funding through government programs such as the Startup India Seed Fund and other credit guarantee schemes."
+      ]
+    },
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "How are you?",
+        "Is anyone there?"
+      ],
+      "responses": [
+        "Hello! How can I assist you today?",
+        "Hey! What can I do for you?",
+        "Hi there, how can I help?",
+        "Good day! How may I assist?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Talk to you soon",
+        "Catch you later"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!",
+        "See you soon! Take care!",
+        "Bye! Let me know if you need anything else.",
+        "Catch you later! Thanks for chatting!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thank you",
+        "Thanks",
+        "I appreciate it",
+        "That's helpful",
+        "Thanks a lot"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Glad I could help!",
+        "Anytime!",
+        "Happy to assist!"
+      ]
+    },
+    {
+      "tag": "how_are_you",
+      "patterns": [
+        "How are you?",
+        "How are you doing?",
+        "What's up?",
+        "How's it going?"
+      ],
+      "responses": [
+        "I'm just a bot, but I'm doing great! How about you?",
+        "I'm here to assist you! How can I help?",
+        "I'm doing well! What can I do for you today?"
+      ]
+    },
+    {
+      "tag": "bot_identity",
+      "patterns": [
+        "Who are you?",
+        "What is your name?",
+        "Are you a human?",
+        "What can you do?"
+      ],
+      "responses": [
+        "I’m your virtual assistant! How can I help?",
+        "I’m a chatbot here to assist you with your queries.",
+        "I am an AI-powered assistant. Ask me anything!",
+        "I can help answer your questions and provide useful information."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "Can you help me?",
+        "I need assistance",
+        "Can you assist?",
+        "Help me",
+        "I need help"
+      ],
+      "responses": [
+        "Of course! How can I assist you?",
+        "Sure! What do you need help with?",
+        "I'm here to help! Let me know what you need.",
+        "Absolutely! Tell me what you need assistance with."
+      ]
+    },
+    {
+      "tag": "jokes",
+      "patterns": [
+        "Tell me a joke",
+        "Can you make me laugh?",
+        "Do you know any jokes?",
+        "Say something funny"
+      ],
+      "responses": [
+        "Why don’t skeletons fight each other? They don’t have the guts.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "I tried to catch some fog earlier… I mist.",
+        "Why don’t some couples go to the gym? Because some relationships don’t work out."
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather like?",
+        "Is it sunny outside?",
+        "Will it rain today?",
+        "How's the weather?"
+      ],
+      "responses": [
+        "I can't check the weather right now, but you can try asking a weather app!",
+        "I'm not sure about the weather, but you can always check online.",
+        "Weather updates aren't my thing yet, but I’m sure your local forecast will help!"
+      ]
+    },
+    {
+      "tag": "gujarati_greeting",
+      "patterns": [
+        "Kem cho?",
+        "Tame kai rite chho?",
+        "Namaste",
+        "Su che?",
+        "Saru divas"
+      ],
+      "responses": [
+        "Hu maja ma chu, tame kem chho?",
+        "Namaste! Tame kai rite chho?",
+        "Hu maja ma chu, su tame madad joiye chhe?",
+        "Namaste! Tamne shu madad joiye chhe?"
+      ]
+    },
+    {
+      "tag": "gujarati_goodbye",
+      "patterns": [
+        "Aavjo",
+        "Bye",
+        "Pachi malishu",
+        "Jalsa thi rehjo"
+      ],
+      "responses": [
+        "Aavjo! Fari thi malvani asha",
+        "Pachi malishu, tamaru din saras jaye!",
+        "Aavjo, maja thi rehjo!"
+      ]
+    },
+    {
+      "tag": "gujarati_thanks",
+      "patterns": [
+        "Aabhar",
+        "Shukriya",
+        "Tamari madad mate aabhar",
+        "Thank you"
+      ],
+      "responses": [
+        "Tamaro aabhar!",
+        "Tamne madad karvanu aanand thayo",
+        "Aapne koi samasya hova to kahi shako"
+      ]
+    },
+    {
+      "tag": "gujarati_joke",
+      "patterns": [
+        "Tame koi majedar chokho kaho",
+        "Mane hasavjo",
+        "Tame maja karvi chho?"
+      ],
+      "responses": [
+        "Su kem ek macchhi ne samundar ma hamesha maja aave chhe? Karan ke tene vada halavva nathi padti!",
+        "Chokho: Tame kyare ek laptop ne upvaad karya chhe? Jawaabdaar – Keyboard ma problem hati!",
+        "Maja ni chokhi? Computer ne Internet kevu lage chhe? Badhu theek che, bas wifi chhe!"
+      ]
+    },
+    {
+      "tag": "gujarati_help",
+      "patterns": [
+        "Madad joiye chhe",
+        "Tame madad kari shako?",
+        "Mane samasya chhe, madad karo"
+      ],
+      "responses": [
+        "Avashya, su madad joiye chhe?",
+        "Mane tamari samasya kahi shako, hu madad karis",
+        "Tamne shu madad joiye chhe?"
+      ]
+    },
+    {
+      "tag": "gujarati_weather",
+      "patterns": [
+        "Aaje mausam kem chhe?",
+        "Mausam ni jaankari aapo",
+        "Varsad padse?"
+      ],
+      "responses": [
+        "Aaje mausam thoda vadadi chhe",
+        "Aaje varsad ni sambhavna chhe, chhata taiyar raho",
+        "Mausam saras chhe, tame jalsa kari shako"
+      ]
+    },
+        {
+          "tag": "startup_registration",
+          "patterns": [
+            "Startup kevi rite nondhani karavvi?",
+            "Bharat ma company registration prakriya shu chhe?",
+            "Startup mate kanuni jaruriyato shu chhe?",
+            "Gujarat ma startup sharu karva mate shu karvu padse?"
+          ],
+          "responses": [
+            "Startup nondhani mate, tamare aa paglaa leva padse: 1) Company nu naam nakki karo, 2) DIN ane DSC melvo, 3) Company registrar pase arji karo, 4) PAN ane TAN melvo, 5) Bank account kholo.",
+            "Bharat ma company registration mate MCA portal par online arji karvi pade chhe. Tamare niyamako ni vigato, company nu naam, ane anya dastavejo submit karva padse.",
+            "Startup mate mukhya kanuni jaruriyato chhe: company registration, GST nondhani, trademark registration, ane jaruri license melvava.",
+            "Gujarat ma startup sharu karva mate, tamare company register karavvi, sthanik nagarpalika pase thi vyavasay license melvavu, ane rajya sarkar ni startup nitiyo no laabh levo joie."
+          ]
+        },
+        {
+          "tag": "startup_funding",
+          "patterns": [
+            "Startup mate bhandol kevi rite melvavu?",
+            "Gujarat ma startup mate sarkari yojnao kai chhe?",
+            "Investors ne kevi rite akarshva?",
+            "Startup mate loan kevi rite melvi?"
+          ],
+          "responses": [
+            "Startup mate bhandol melvava na vikalpo chhe: 1) Bootstrapping, 2) Angel investors, 3) Venture capital, 4) Crowdfunding, 5) Sarkari yojnao.",
+            "Gujarat ma startup mate 'Startup Gujarat' yojna chhe, je seed funding, mentorship, ane anya sahay pradan kare chhe.",
+            "Investors ne akarshva mate, ek majbut business plan, scalable product, ane saksham team banavo. Networking events ma bhag lo ane pitch deck taiyar karo.",
+            "Startup mate loan melvava, banks athva SIDBI jevi sansthao no sampark karo. Tamare ek vistrut business plan ane nanakiya projections taiyar karva padse."
+          ]
+        },
+        {
+          "tag": "startup_taxes",
+          "patterns": [
+            "Startup mate kaya karvera lagu pade chhe?",
+            "Startup mate GST kevi rite nondhani karavvi?",
+            "Startup mate kar chhut chhe?",
+            "Income tax return kevi rite file karvu?"
+          ],
+          "responses": [
+            "Startup mate mukhya karvera chhe: Income tax, GST, ane karmachario mate TDS. Tamare varshik return file karvu padse ane niyamit kar chukavni karvi padse.",
+            "GST nondhani mate, GST portal par online arji karo. Tamare PAN, Aadhar, business registration dastavejo, ane bank account ni vigato aapvi padse.",
+            "Haa, Bharat sarkar ni 'Startup India' yojna hethal manyata prapt startups ne 3 varsh mate income tax ma chhut male chhe. Aa mate DPIIT manyata jaruri chhe.",
+            "Income tax return file karva mate, income tax website par jao, yogya ITR form pasand karo, tamari aavak ane kharch ni vigato bharo, ane online submit karo."
+          ]
+        },
+        {
+          "tag": "startup_legal_compliance",
+          "patterns": [
+            "Startup mate kaya kayda nu palan karvu jaruri chhe?",
+            "Karmachario mate kanuni javabdario shu chhe?",
+            "Intellectual property rights kevi rite surakshit karva?",
+            "Company kayda ange shu janvu jaruri chhe?"
+          ],
+          "responses": [
+            "Startups e aa kayda nu palan karvu jaruri chhe: Company kaydo 2013, GST kaydo, shram kayda, data suraksha niyamo, ane udyog-vishisht niyamano.",
+            "Karmachario mate kanuni javabdario ma samel chhe: Laghuttam vetan chukvani, EPF ane ESI nondhani, salamat karyasthal ni khatri, ane saman tak pradan karvi.",
+            "IP rights surakshit karva mate, tamara trademark, copyright, ane patents register karavo. NDA no upyog karo ane IP sambandhit kalamo tamara kararo ma samel karo.",
+            "Company kayda antargat, tamare niyamit AGM yojvi, varshik return file karvu, board meetings yojvi, ane company na records jalavva jaruri chhe."
+          ]
+        },
+            {
+              "tag": "startup_idea_validation",
+              "patterns": [
+                "Maro startup idea kevi rite check karvo?",
+                "Startup idea valid chhe ke nahi te kevi rite janvu?",
+                "Business idea ne evaluate karva ni sar saral rit?",
+                "Startup idea ne test karva mate shu karvanu?"
+              ],
+              "responses": [
+                "Tamara startup idea ne check karva mate: 1) Market research karo, 2) Potential grahako sathe vat karo, 3) Minimum viable product (MVP) banavo, 4) Competitor analysis karo, 5) SWOT analysis karo.",
+                "Idea ni validity check karva: 1) Problem-solution fit check karo, 2) Target market ni size evaluate karo, 3) Revenue model vicharо, 4) Scalability ni shakyata tapaso.",
+                "Business idea evaluate karva: 1) Customer surveys karo, 2) Focus groups organize karo, 3) Online forums par feedback lo, 4) Industry experts sathe vat karo.",
+                "Idea test karva: 1) Landing page banavo ane interest measure karo, 2) Crowdfunding campaign sharu karo, 3) Pop-up store or event organize karo, 4) Free trial or beta version offer karo."
+              ]
+            },
+            {
+              "tag": "startup_team_building",
+              "patterns": [
+                "Startup mate sari team kevi rite banavvi?",
+                "Co-founder kevi rite shodhvo?",
+                "Startup ma hiring karta pehla shu dhyan rakhvu?",
+                "Nana startup mate motivate team kevi rite rakhvi?"
+              ],
+              "responses": [
+                "Sari startup team banavva: 1) Diverse skills vala loko ne lo, 2) Cultural fit par dhyan apo, 3) Passion ane dedication check karo, 4) Clear roles ane responsibilities set karo.",
+                "Co-founder shodhva: 1) Networking events ma jao, 2) Online co-founder matching platforms no upyog karo, 3) Tamara industry na groups ma active raho, 4) Shared vision ane values vala vyakti ne pasand karo.",
+                "Startup ma hiring karta pehla: 1) Clear job descriptions banavo, 2) Company culture define karo, 3) Hiring process standardize karo, 4) Probation period rakho, 5) Equity ane compensation structure nakki karo.",
+                "Team ne motivate rakhva: 1) Open communication maintain karo, 2) Regular feedback apo ane lo, 3) Growth opportunities provide karo, 4) Milestones celebrate karo, 5) Work-life balance promote karo."
+              ]
+            },
+            {
+              "tag": "startup_marketing",
+              "patterns": [
+                "Startup mate marketing kevi rite karvi?",
+                "Low budget ma startup ni branding kevi rite karvi?",
+                "Digital marketing strategies startup mate?",
+                "Customer acquisition mate sasta upaay?"
+              ],
+              "responses": [
+                "Startup marketing mate: 1) Content marketing karo, 2) Social media no use karo, 3) Influencer partnerships karo, 4) Email marketing campaigns chalavo, 5) SEO par focus karo.",
+                "Low budget branding: 1) Strong social media presence banavo, 2) Blogging ane guest posting karo, 3) Local events ma participate karo, 4) Customer testimonials no use karo, 5) Referral programs sharu karo.",
+                "Digital marketing strategies: 1) Google Ads no use karo, 2) Retargeting campaigns chalavo, 3) Social media ads karo, 4) Video marketing karo (YouTube, Instagram), 5) Affiliate marketing programs join karo.",
+                "Sasta customer acquisition upaay: 1) Word-of-mouth marketing promote karo, 2) Free trials or freemium model apnavo, 3) Partnerships ane collaborations karo, 4) User-generated content encourage karo, 5) Community building par focus karo."
+              ]
+            },
+            {
+              "tag": "startup_scaling",
+              "patterns": [
+                "Startup ne scale up kevi rite karvu?",
+                "Business growth mate shu strategies apnavi?",
+                "Startup expansion mate shu jaruri chhe?",
+                "Scale karta samaye kevi mistakes avoid karvi?"
+              ],
+              "responses": [
+                "Startup ne scale up karva: 1) Processes automate karo, 2) Data-driven decisions lo, 3) Right talent hire karo, 4) Customer feedback par focus karo, 5) Funding options explore karo.",
+                "Business growth strategies: 1) New markets ma expand karo, 2) Product line diversify karo, 3) Strategic partnerships karo, 4) Acquisition opportunities explore karo, 5) Franchise model consider karo.",
+                "Startup expansion mate jaruri: 1) Scalable business model, 2) Strong financial management, 3) Efficient operations, 4) Clear growth metrics, 5) Adaptable company culture.",
+                "Scaling mistakes avoid karva: 1) Too fast scaling thi bacho, 2) Cash flow management ignore na karo, 3) Core values maintain karo, 4) Customer focus gumavsho nahi, 5) Over-hiring thi bacho."
+              ]
+            },
+            {
+              "tag": "startup_pivoting",
+              "patterns": [
+                "Startup pivot karvu jaruri chhe?",
+                "Business model change karva ni process?",
+                "Pivot karva mate yogya samay kyare?",
+                "Startup pivot success stories?"
+              ],
+              "responses": [
+                "Startup pivot jaruri hoi shake jo: 1) Current model profitable na hoy, 2) Market demand change thai gai hoy, 3) New opportunity dikhai, 4) Competition vadhare hoy.",
+                "Business model change process: 1) Current model analyze karo, 2) Customer feedback collect karo, 3) New ideas brainstorm karo, 4) Small scale par test karo, 5) Successful test pachi full pivot karo.",
+                "Pivot mate yogya samay: 1) Repeated customer feedback negative hoy, 2) Growth stagnant thai gayu hoy, 3) Market trends change thai gaya hoy, 4) New technology emerge thai hoy.",
+                "Pivot success stories: 1) Instagram - location check-in app mathi photo-sharing app, 2) Slack - gaming company mathi communication tool, 3) PayPal - mobile payments mathi online payments."
+              ]
+            }
+          ]
+        }
+
