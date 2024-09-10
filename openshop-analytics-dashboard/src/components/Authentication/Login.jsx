@@ -104,31 +104,39 @@ const Login = () => {
   };
 
   return (
-    <Stack spacing="6">
+    <Stack spacing="6" p="4" bg="white" borderRadius="lg" boxShadow="lg">
       <Stack spacing="5">
         <FormControl isRequired>
-          <FormLabel htmlFor="email" color="white">
+          <FormLabel htmlFor="email" color="gray.600">
             Email
           </FormLabel>
           <Input
-            background="white"
+            background="gray.50"
             type="email"
             name="email"
             value={credentials.email}
             placeholder="Enter Your Email"
-            onChange={(e) => handleCredentials(e)}
+            onChange={handleCredentials}
+            focusBorderColor="#6f42c1"
           />
         </FormControl>
       </Stack>
 
+
       <Stack spacing="5">
         <FormControl isRequired>
-          <FormLabel htmlFor="password" color="white">
+          <FormLabel htmlFor="password" color="gray.600">
             Password
           </FormLabel>
-          <InputGroup background="white">
+          <InputGroup background="gray.50">
             <InputRightElement w="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+              <Button
+                h="1.75rem"
+                size="sm"
+                onClick={() => setShow(!show)}
+                variant="ghost"
+                colorScheme="purple"
+              >
                 {show ? "Hide" : "Show"}
               </Button>
             </InputRightElement>
@@ -137,37 +145,34 @@ const Login = () => {
               name="password"
               value={credentials.password}
               placeholder="Password"
-              onChange={(e) => handleCredentials(e)}
+              onChange={handleCredentials}
+              focusBorderColor="#6f42c1"
             />
           </InputGroup>
         </FormControl>
       </Stack>
 
+
       <Button
-        colorScheme="blue"
+        colorScheme="purple"
         width="100%"
-        style={{ marginTop: 15 }}
+        mt={4}
         onClick={submitHandler}
         isLoading={loading}
+        borderRadius="full"
       >
         Login
       </Button>
-
       {/* <Button
-        variant="solid"
-        colorScheme="red"
-        width="100%"
-        onClick={() => {
-          setCredentials({ email: "guest@example.com", password: "12345678" });
-        }}
+        variant="link"
+        onClick={switchToSignup}
+        color="purple.600"
+        mt={2}
       >
-        <i
-          className="fas fa-user-alt"
-          style={{ fontSize: "15px", marginRight: 8 }}
-        />{" "}
-        Get Guest User Credentials
+        Don't have an account? Sign Up
       </Button> */}
     </Stack>
+
   );
 };
 

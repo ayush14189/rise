@@ -1,56 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-// Assets
-import ContactImg1 from "../../assets/img/contact-1.png";
-import ContactImg2 from "../../assets/img/contact-2.png";
-import ContactImg3 from "../../assets/img/contact-3.png";
 
 export default function Contact() {
   return (
     <Wrapper id="contact">
-      <div className="lightBg">
-        <div className="container">
-          <HeaderInfo>
-            <h1 className="font40 extraBold">Let's get in touch</h1>
-            <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-          </HeaderInfo>
-          <div className="row" style={{ paddingBottom: "30px" }}>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <Form>
-                <label className="font13">First name:</label>
-                <input type="text" id="fname" name="fname" className="font20 extraBold" />
-                <label className="font13">Email:</label>
-                <input type="text" id="email" name="email" className="font20 extraBold" />
-                <label className="font13">Subject:</label>
-                <input type="text" id="subject" name="subject" className="font20 extraBold" />
-                <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
-              </Form>
-              <SumbitWrapper className="flex">
-                <ButtonInput type="submit" value="Send Message" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
-              </SumbitWrapper>
-            </div>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
-              <div style={{ width: "50%" }} className="flexNullCenter flexColumn">
-                <ContactImgBox>
-                  <img src="https://uploads-ssl.webflow.com/5ef0df6b9272f7410180a013/5ef204bb10b93fdbe5e601bb_contact-2860030_1920-1024x683.jpg" alt="office" className="radius6" />
-                </ContactImgBox>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <ContactImgBox>
-                  <img src="https://img.freepik.com/free-photo/hot-line-contact-us-call-center-search-interface_53876-124009.jpg?w=2000" alt="office" className="radius6" />
-                </ContactImgBox>
-              </div>
-              <div style={{ width: "50%" }}>
-                <div style={{ marginTop: "100px" }}>
-                  <img src="https://previews.123rf.com/images/macrovector/macrovector1501/macrovector150100810/35957893-technical-support-call-center-contact-us-flat-vertical-banner-set-isolated-vector-illustration.jpg" alt="office" className="radius6" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="container">
+        <HeaderInfo>
+          <h1 className="font40 extraBold">Let's Get in Touch</h1>
+          <p className="font20">
+            Connect with Us for Support and Queries
+          </p>
+        </HeaderInfo>
+        <FormWrapper>
+          <Form>
+            <InputWrapper>
+              <label className="font13">First Name</label>
+              <Input type="text" id="fname" name="fname" placeholder="Enter your first name" />
+            </InputWrapper>
+            <InputWrapper>
+              <label className="font13">Email</label>
+              <Input type="email" id="email" name="email" placeholder="Enter your email" />
+            </InputWrapper>
+            <InputWrapper>
+              <label className="font13">Subject</label>
+              <Input type="text" id="subject" name="subject" placeholder="Enter the subject" />
+            </InputWrapper>
+            <InputWrapper>
+              <label className="font13">Message</label>
+              <Textarea rows="4" id="message" name="message" placeholder="Type your message here..."></Textarea>
+            </InputWrapper>
+            <SubmitButton type="submit" value="Send Message" />
+          </Form>
+        </FormWrapper>
       </div>
     </Wrapper>
   );
@@ -58,66 +39,87 @@ export default function Contact() {
 
 const Wrapper = styled.section`
   width: 100%;
+  padding: 80px 0;
+  background-color: #f8f9fa;
 `;
+
 const HeaderInfo = styled.div`
-  padding: 70px 0 30px 0;
-  @media (max-width: 860px) {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 40px;
+  h1 {
+    color: #333;
   }
-`;
-const Form = styled.form`
-  padding: 70px 0 30px 0;
-  input,
-  textarea {
-    width: 100%;
-    background-color: transparent;
-    border: 0px;
-    outline: none;
-    box-shadow: none;
-    border-bottom: 1px solid #707070;
-    height: 30px;
-    margin-bottom: 30px;
-  }
-  textarea {
-    min-height: 100px;
-  }
-  @media (max-width: 860px) {
-    padding: 30px 0;
-  }
-`;
-const ButtonInput = styled.input`
-  border: 1px solid #7620ff;
-  background-color: #7620ff;
-  width: 100%;
-  padding: 15px;
-  outline: none;
-  color: #fff;
-  :hover {
-    background-color: #580cd2;
-    border: 1px solid #7620ff;
-    color: #fff;
-  }
-  @media (max-width: 991px) {
+  p {
+    color: #555;
+    max-width: 600px;
     margin: 0 auto;
   }
 `;
-const ContactImgBox = styled.div`
-  max-width: 180px; 
-  align-self: flex-end; 
-  margin: 10px 30px 10px 0;
+
+const FormWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
-const SumbitWrapper = styled.div`
-  @media (max-width: 991px) {
-    width: 100%;
-    margin-bottom: 50px;
+
+const Form = styled.form`
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const InputWrapper = styled.div`
+  margin-bottom: 30px;
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
   }
 `;
 
+const Input = styled.input`
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  &:focus {
+    border-color: #7620ff;
+  }
+`;
 
+const Textarea = styled.textarea`
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.3s ease;
+  &:focus {
+    border-color: #7620ff;
+  }
+`;
 
-
-
-
-
-
-
+const SubmitButton = styled.input`
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #6f42c1;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    background-color: #580cd2;
+    box-shadow: 0 8px 20px rgba(88, 12, 210, 0.3);
+  }
+`;

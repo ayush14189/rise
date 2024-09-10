@@ -9,10 +9,10 @@ export default function DashboardStatsGrid() {
 					<IoBagHandle className="text-2xl text-white" />
 				</div>
 				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Your Research Project</span>
+					<span className="text-sm text-gray-500 font-light">Funding raised</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$54232</strong>
-						<span className="text-sm text-green-500 pl-2">+343</span>
+						<strong className="text-xl text-gray-700 font-semibold">$5423</strong>
+						<span className="text-sm text-green-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -21,10 +21,10 @@ export default function DashboardStatsGrid() {
 					<IoPieChart className="text-2xl text-white" />
 				</div>
 				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Research Project Completed</span>
+					<span className="text-sm text-gray-500 font-light">Funding Request sent </span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$3423</strong>
-						<span className="text-sm text-green-500 pl-2">-343</span>
+						<strong className="text-xl text-gray-700 font-semibold">3</strong>
+						<span className="text-sm text-green-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -35,8 +35,8 @@ export default function DashboardStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Patents Filed</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">12313</strong>
-						<span className="text-sm text-red-500 pl-2">-30</span>
+						<strong className="text-xl text-gray-700 font-semibold">3</strong>
+						<span className="text-sm text-red-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>
@@ -47,8 +47,8 @@ export default function DashboardStatsGrid() {
 				<div className="pl-4">
 					<span className="text-sm text-gray-500 font-light">Patents Granted</span>
 					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">16432</strong>
-						<span className="text-sm text-red-500 pl-2">-43</span>
+						<strong className="text-xl text-gray-700 font-semibold">2</strong>
+						<span className="text-sm text-red-500 pl-2"></span>
 					</div>
 				</div>
 			</BoxWrapper>

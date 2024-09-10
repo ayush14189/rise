@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-// Components
 import Sidebar from "../Nav/Sidebar";
 import Backdrop from "../Elements/Backdrop";
-// Assets
 import LogoIcon from "../../../../assets/logo.png";
+import GovtIcon from "../../../../assets/govt.png";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
-
 import { useNavigate } from "react-router-dom";
+
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     window.addEventListener("scroll", () => setY(window.scrollY));
     return () => {
       window.removeEventListener("scroll", () => setY(window.scrollY));
     };
   }, [y]);
-  const submitHandler = async () => {
-    navigate("/login");
+
+  const loginHandler = () => {
+    navigate("/home", { state: { tabIndex: 0 } });
+  };
+
+  const signupHandler = () => {
+    navigate("/home", { state: { tabIndex: 1 } });
   };
 
   return (
@@ -34,7 +39,7 @@ export default function TopNavbar() {
         <NavInner className="container flexSpaceCenter">
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
             <img
-              src="https://cdn.expresspharma.in/wp-content/uploads/2019/07/23170458/Ministry-of-AYUSH-logo-1-3.jpg"
+              src={GovtIcon}
               width="80"
               height="10"
               alt=""
@@ -65,7 +70,7 @@ export default function TopNavbar() {
               <Link
                 activeClass="active"
                 style={{ padding: "10px 15px" }}
-                to="services"
+                to="features"
                 spy={true}
                 smooth={true}
                 offset={-80}
@@ -74,16 +79,6 @@ export default function TopNavbar() {
               </Link>
             </li>
             {/* <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
-                Projects
-              </Link>
-            </li>
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
-                Blog
-              </Link>
-            </li> */}
-            <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
                 style={{ padding: "10px 15px" }}
@@ -93,6 +88,18 @@ export default function TopNavbar() {
                 offset={-80}
               >
                 Eligibility Criteria
+              </Link>
+            </li> */}
+            <li className="semiBold font15 pointer">
+              <Link
+                activeClass="active"
+                style={{ padding: "10px 15px" }}
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-80}
+              >
+                About
               </Link>
             </li>
             <li className="semiBold font15 pointer">
@@ -107,22 +114,17 @@ export default function TopNavbar() {
                 Contact
               </Link>
             </li>
-            <li className="semiBold font15 pointer">
-            <a
-            href="https://creator.us.uneeq.io/try/7254fa33-6a73-4102-9c95-52d36f4641e7"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Virtual mentor
-          </a>
-            </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
             <li className="semiBold font15 pointer">
-              <button onClick={() => submitHandler()}>Log in</button>
-              {/* <a href="/login" style={{ padding: "10px 30px 10px 0" }}>
+              <Button onClick={loginHandler} style={{ marginRight: "15px" }}>
                 Log in
-              </a> */}
+              </Button>
+            </li>
+            <li className="semiBold font15 pointer">
+              <GetStartedButton onClick={signupHandler}>
+                Get Started
+              </GetStartedButton>
             </li>
           </UlWrapperRight>
         </NavInner>
@@ -160,7 +162,50 @@ const UlWrapper = styled.ul`
   }
 `;
 const UlWrapperRight = styled.ul`
+  display: flex;
+  align-items: center;
   @media (max-width: 760px) {
     display: none;
+  }
+`;
+const Button = styled.button`
+  padding: 8px 16px;
+  border: none;
+  background-color: #ffffff;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 8px;
+  &:hover {
+    background-color: #f3f3f3;
+    color: #6f42c1;
+  }
+`;
+
+const GetStartedButton = styled(Button)`
+  background-color: #6f42c1;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+  &:hover {
+    background-color: #fff;
+    color: #6f42c1;
+    border: 2px solid #6f42c1;
+  }
+`;
+
+// Add keyframes for the pulse effect
+const keyframes = styled.div`
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 `;

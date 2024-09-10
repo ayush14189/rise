@@ -4,7 +4,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   Stack,
   useToast,
@@ -13,11 +12,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const GovtAgency = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+
 
   const [credentials, setCredentials] = useState({
     agencyName: "",
@@ -25,20 +26,63 @@ const GovtAgency = () => {
     password: "",
     confirmPassword: "",
     RegistrationNo: "",
-     
     agencyType: "",
-    officerName: "", 
+    officerName: "",
     contactNumber: ""
   });
+
 
   const handleCredentials = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  
+
+  const handleUploadFile = async (e) => {
+    setLoading(true);
+
+
+    if (!e.target.files[0]) {
+      setLoading(false);
+      return toast({
+        title: "Please select a file",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-right",
+      });
+    }
+
+
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "gov-agency-docs");
+    data.append("cloud_name", "your_cloudinary_cloud_name");
+
+
+    try {
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/your_cloudinary_cloud_name/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const json = await response.json();
+      setCredentials({
+        ...credentials,
+        [e.target.name]: json.secure_url,
+      });
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+  };
+
 
   const submitHandler = async () => {
     setLoading(true);
+
 
     if (
       !credentials.agencyName ||
@@ -57,6 +101,7 @@ const GovtAgency = () => {
       });
     }
 
+
     if (credentials.password !== credentials.confirmPassword) {
       setLoading(false);
       return toast({
@@ -67,6 +112,7 @@ const GovtAgency = () => {
         position: "bottom-right",
       });
     }
+
 
     try {
       const response = await fetch("http://localhost:5000/api/user/govtagency", {
@@ -79,11 +125,11 @@ const GovtAgency = () => {
           email: credentials.email,
           password: credentials.password,
           RegistrationNo: credentials.RegistrationNo,
-           
           agencyType: credentials.agencyType,
-          officerName: credentials.officerName, 
+          officerName: credentials.officerName,
           contactNumber: credentials.contactNumber}),
       });
+
 
       const data = await response.json();
       toast({
@@ -93,6 +139,7 @@ const GovtAgency = () => {
         isClosable: true,
         position: "bottom-right",
       });
+
 
       if (data.success) {
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -113,52 +160,68 @@ const GovtAgency = () => {
     }
   };
 
+
   return (
-    <Stack spacing="6">
-      <FormControl isRequired id="agencyName">
-        <FormLabel color="white">Agency Name</FormLabel>
+    <Stack spacing="6" p="4" bg="white" borderRadius="lg" boxShadow="lg">
+      <FormControl isRequired>
+        <FormLabel htmlFor="agencyName" color="gray.600">
+          Agency Name
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="agencyName"
           value={credentials.agencyName}
           placeholder="Enter the Government Agency Name"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      <FormControl isRequired id="email">
-        <FormLabel color="white">Email</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="email" color="gray.600">
+          Email
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="email"
           name="email"
           value={credentials.email}
           placeholder="Enter Email Address"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      <FormControl isRequired id="RegistrationNo">
-        <FormLabel color="white">Registration No.</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="RegistrationNo" color="gray.600">
+          Registration No.
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="RegistrationNo"
           value={credentials.RegistrationNo}
           placeholder="Enter Official Registration Number"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      <FormControl isRequired id="agencyType">
-        <FormLabel color="white">Agency Type</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="agencyType" color="gray.600">
+          Agency Type
+        </FormLabel>
         <Select
-          background="white"
+          background="gray.50"
           placeholder="Select Agency Type"
           name="agencyType"
           value={credentials.agencyType}
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         >
           <option value="central">Central Government</option>
           <option value="state">State Government</option>
@@ -167,35 +230,52 @@ const GovtAgency = () => {
         </Select>
       </FormControl>
 
-      <FormControl isRequired id="officerName">
-        <FormLabel color="white">Authorized Officer</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="officerName" color="gray.600">
+          Authorized Officer
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="officerName"
           value={credentials.officerName}
           placeholder="Officer Name"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      <FormControl isRequired id="contactNumber">
-        <FormLabel color="white">Contact Number</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="contactNumber" color="gray.600">
+          Contact Number
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="contactNumber"
           value={credentials.contactNumber}
           placeholder="Official Contact Number"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      <FormControl isRequired id="password">
-        <FormLabel color="white">Password</FormLabel>
-        <InputGroup background="white">
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="password" color="gray.600">
+          Password
+        </FormLabel>
+        <InputGroup background="gray.50">
           <InputRightElement w="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -205,15 +285,25 @@ const GovtAgency = () => {
             value={credentials.password}
             placeholder="Enter Password"
             onChange={handleCredentials}
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
 
-      <FormControl isRequired id="confirmPassword">
-        <FormLabel color="white">Confirm Password</FormLabel>
-        <InputGroup background="white">
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="confirmPassword" color="gray.600">
+          Confirm Password
+        </FormLabel>
+        <InputGroup background="gray.50">
           <InputRightElement w="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -223,33 +313,25 @@ const GovtAgency = () => {
             value={credentials.confirmPassword}
             placeholder="Confirm Password"
             onChange={handleCredentials}
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
-{/* 
-      <FormControl id="registrationDocument">
-        <FormLabel color="white">Upload Official Registration Document</FormLabel>
-        <InputGroup background="white">
-          <Input
-            type="file"
-            name="registrationDocument"
-            accept="application/pdf"
-            onChange={handleUploadFile}
-          />
-        </InputGroup>
-      </FormControl> */}
+
 
       <Button
-        colorScheme="blue"
+        colorScheme="purple"
         width="100%"
-        style={{ marginTop: 15 }}
+        mt={4}
         onClick={submitHandler}
         isLoading={loading}
+        borderRadius="full"
       >
-        Sign Up
+        Register
       </Button>
     </Stack>
   );
 };
+
 
 export default GovtAgency;

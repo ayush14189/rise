@@ -32,7 +32,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<LandingPg />} />
-                <Route path="/login" element={<Home/>} />
+                <Route path="/home" element={<Home/>} />
                 <Route path="/user" element={<Layout />}>
                     <Route index element={<Dashboard />} />
 

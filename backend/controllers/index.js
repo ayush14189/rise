@@ -23,7 +23,7 @@ const { promptMessage } = require("./promptControllers");
 const { generateImage } = require("./imageControllers");
 const { createCollaborationRequest, getCollaborationRequests,getCollaborationRequest,updateCollaborationRequest,deleteCollaborationRequest } = require("./CollaborationRequest");
 const {createTrademark,getTrademarks,getTrademarkById,updateTrademarkStatus}=require("./trademarkcontroller")
-const { createInvestment}=require("./investements")
+const { createInvestment,getAllInvestmentsByInvestorId}=require("./investements")
 module.exports = {
 
   authUser,
@@ -99,5 +99,6 @@ module.exports = {
   getTrademarkById,
   updateTrademarkStatus,
 
-  createInvestment
+  createInvestment,
+  getAllInvestmentsByInvestorId
 };

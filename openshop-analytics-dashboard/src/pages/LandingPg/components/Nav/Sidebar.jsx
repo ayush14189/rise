@@ -11,9 +11,9 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       <SidebarHeader className="flexSpaceCenter">
         <div className="flexNullCenter">
           <img src={LogoIcon} alt="" width="80" height="10" />
-          <h1 className="whiteColor font20" style={{ marginLeft: "15px" }}>
-            AYUSH PORTAL
-          </h1>
+          {/* <h1 className="whiteColor font20" style={{ marginLeft: "15px" }}>
+            RISE PORTAL
+          </h1> */}
         </div>
         <CloseBtn
           onClick={() => toggleSidebar(!sidebarOpen)}
@@ -43,7 +43,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             activeClass="active"
             className="whiteColor"
             style={{ padding: "10px 15px" }}
-            to="services"
+            to="features"
             spy={true}
             smooth={true}
             offset={-60}
@@ -51,7 +51,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             Features
           </Link>
         </li>
-        <li className="semiBold font15 pointer">
+        {/* <li className="semiBold font15 pointer">
           <Link
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
@@ -63,6 +63,20 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Eligibility
+          </Link>
+        </li> */}
+        <li className="semiBold font15 pointer">
+          <Link
+            onClick={() => toggleSidebar(!sidebarOpen)}
+            activeClass="active"
+            className="whiteColor"
+            style={{ padding: "10px 15px" }}
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-60}
+          >
+            About
           </Link>
         </li>
         <li className="semiBold font15 pointer">
@@ -79,7 +93,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             Contact
           </Link>
         </li>
-        <li className="semiBold font15 pointer">
+        {/* <li className="semiBold font15 pointer">
           <a
             href="https://creator.us.uneeq.io/try/7254fa33-6a73-4102-9c95-52d36f4641e7"
             target="_blank"
@@ -87,12 +101,12 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           >
             Virtual mentor
           </a>
-        </li>
+        </li> */}
       </UlStyle>
       <UlStyle className="flexSpaceCenter">
         <li className="semiBold font15 pointer">
           <a
-            href="/"
+            href="/home"
             style={{ padding: "10px 30px 10px 0" }}
             className="whiteColor"
           >
@@ -101,7 +115,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
         </li>
         <li className="semiBold font15 pointer flexCenter">
           <a
-            href="/"
+            href="/home"
             className="radius8 lightBg"
             style={{ padding: "10px 15px" }}
           >

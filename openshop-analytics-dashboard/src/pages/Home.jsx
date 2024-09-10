@@ -1,63 +1,92 @@
 import {
   Container,
   Box,
-  Text,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Login } from "../components/";
-import { Signup } from "../components/";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Login, Signup } from "../components/";
+
+
+// Import the background image from assets
+import backgroundImage from "../assets/bgImg/bgImage.png"; // Adjust the path accordingly
+
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [tabIndex, setTabIndex] = useState(location.state?.tabIndex || 0);
+
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
     if (!userInfo) {
-      console.log("User is not logged in. Redirecting to /login");
       navigate("/login");
     }
   }, [navigate]);
 
+
+  const handleTabsChange = (index) => {
+    setTabIndex(index);
+  };
+
+
   return (
-    <Container maxWidth="xl">
-      <Box
-        d="flex"
-        justifyContent="center"
-        p={3}
-        bg="https://bsmedia.business-standard.com/_media/bs/img/misc/2022-12/08/full/pm-modi-1670510641-43153510.jpg?im=FeatureCrop,size=(1200,900)"
-        w="100%"
-        m="40px 0 15px 0"
-        borderRadius="lg"
-        borderWidth="none"
-      ></Box>
+    <Container
+      maxWidth="100vw"
+      height="100vh"
+      p={0}
+      m={0}
+      centerContent
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      bgImage={`url(${backgroundImage})`}
+      bgSize="cover"
+      bgPosition="center"
+    >
       <Box
         bg="white"
-        w="70%"
-        margin="auto"
-        background="#7620FF"
-        p={4}
+        w="100%"
+        maxWidth="lg" // Increased width for better layout
+        p={8}
         borderRadius="lg"
-        borderWidth="1px"
+        boxShadow="xl"
+        opacity="0.95"
       >
-        <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em" margin="1rem">
-            <Tab background="white" padding="10px" margin="6px">
+        <Tabs
+          isFitted
+          variant="soft-rounded"
+          index={tabIndex}
+          onChange={handleTabsChange}
+        >
+          <TabList mb="1em" gap="6px">
+            <Tab
+              fontWeight="bold"
+              color="gray.600"
+              _selected={{ color: "white", bg: "#6f42c1" }}
+              borderRadius="lg"
+              p={3}
+            >
               Login
             </Tab>
-            <Tab background="white" padding="10px" margin="6px">
+            <Tab
+              fontWeight="bold"
+              color="gray.600"
+              _selected={{ color: "white", bg: "#6f42c1" }}
+              borderRadius="lg"
+              p={3}
+            >
               Sign Up
             </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Login />
+              <Login switchToSignup={() => setTabIndex(1)} />
             </TabPanel>
             <TabPanel>
               <Signup />
@@ -68,5 +97,6 @@ const Home = () => {
     </Container>
   );
 };
+
 
 export default Home;

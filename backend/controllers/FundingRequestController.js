@@ -81,7 +81,7 @@ exports.acceptFundingRequest = async (req, res) => {
     const { id } = req.params;
     const fundingRequest = await FundingRequest.findByIdAndUpdate(
       id,
-      { status: 'active' },
+      { status: 'accepted',investor_id: req.body.investor_id },
       { new: true }
     );
 
@@ -91,7 +91,7 @@ exports.acceptFundingRequest = async (req, res) => {
 
     // Create a new investment record
     const newInvestment = new Investment({
-      investor_id: fundingRequest.investor_id,
+      investor_id: req.body.investor_id,
       startupName: fundingRequest.startup_id,
       amount: fundingRequest.requestedAmount,
       investmentDate: new Date(),
@@ -102,6 +102,7 @@ exports.acceptFundingRequest = async (req, res) => {
 
     res.status(200).json(fundingRequest);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };

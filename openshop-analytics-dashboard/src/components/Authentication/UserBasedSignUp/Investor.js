@@ -12,11 +12,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Investor = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+
 
   const [credentials, setCredentials] = useState({
     name: "",
@@ -30,12 +32,15 @@ const Investor = () => {
     UserType: "Investor",
   });
 
+
   const handleCredentials = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+
   const submitHandler = async () => {
     setLoading(true);
+
 
     // Validation
     if (!credentials.name || !credentials.email || !credentials.password || !credentials.confirmPassword) {
@@ -49,6 +54,7 @@ const Investor = () => {
       });
     }
 
+
     if (credentials.password !== credentials.confirmPassword) {
       setLoading(false);
       return toast({
@@ -60,6 +66,7 @@ const Investor = () => {
       });
     }
 
+
     try {
       const response = await fetch("http://localhost:5000/api/user/investor", {
         method: "POST",
@@ -68,6 +75,7 @@ const Investor = () => {
       });
       const data = await response.json();
 
+
       toast({
         title: data.message,
         status: !data.success ? "error" : "success",
@@ -75,6 +83,7 @@ const Investor = () => {
         isClosable: true,
         position: "bottom-right",
       });
+
 
       if (data.success) {
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -95,53 +104,70 @@ const Investor = () => {
     }
   };
 
+
   return (
-    <Stack spacing="6">
-      {/* Name */}
-      <FormControl isRequired id="name">
-        <FormLabel color="white">Name</FormLabel>
+    <Stack spacing="6" p="4" bg="white" borderRadius="lg" boxShadow="lg">
+      <FormControl isRequired>
+        <FormLabel htmlFor="name" color="gray.600">
+          Name
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="name"
           value={credentials.name}
           placeholder="Enter your name"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      {/* Email */}
-      <FormControl isRequired id="email">
-        <FormLabel color="white">Email</FormLabel>
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="email" color="gray.600">
+          Email
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="email"
           name="email"
           value={credentials.email}
           placeholder="Enter your email"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      {/* Phone (Optional) */}
-      <FormControl id="phone">
-        <FormLabel color="white">Phone Number</FormLabel>
+
+      <FormControl>
+        <FormLabel htmlFor="phone" color="gray.600">
+          Phone Number (Optional)
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="tel"
           name="phone"
           value={credentials.phone}
           placeholder="Enter your phone number"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      {/* Password */}
-      <FormControl isRequired id="password">
-        <FormLabel color="white">Password</FormLabel>
-        <InputGroup background="white">
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="password" color="gray.600">
+          Password
+        </FormLabel>
+        <InputGroup background="gray.50">
           <InputRightElement w="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -151,16 +177,25 @@ const Investor = () => {
             value={credentials.password}
             placeholder="Password"
             onChange={handleCredentials}
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
 
-      {/* Confirm Password */}
-      <FormControl isRequired id="confirmPassword">
-        <FormLabel color="white">Confirm Password</FormLabel>
-        <InputGroup background="white">
+
+      <FormControl isRequired>
+        <FormLabel htmlFor="confirmPassword" color="gray.600">
+          Confirm Password
+        </FormLabel>
+        <InputGroup background="gray.50">
           <InputRightElement w="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -170,19 +205,23 @@ const Investor = () => {
             value={credentials.confirmPassword}
             placeholder="Confirm Password"
             onChange={handleCredentials}
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
 
-      {/* Investment Focus */}
-      <FormControl id="investmentFocus">
-        <FormLabel color="white">Investment Focus</FormLabel>
+
+      <FormControl>
+        <FormLabel htmlFor="investmentFocus" color="gray.600">
+          Investment Focus
+        </FormLabel>
         <Select
-          background="white"
+          background="gray.50"
           name="investmentFocus"
           value={credentials.investmentFocus}
           placeholder="Select your investment focus"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         >
           <option value="Tech">Tech</option>
           <option value="Healthcare">Healthcare</option>
@@ -190,15 +229,18 @@ const Investor = () => {
         </Select>
       </FormControl>
 
-      {/* Experience Level */}
-      <FormControl id="experienceLevel">
-        <FormLabel color="white">Experience Level</FormLabel>
+
+      <FormControl>
+        <FormLabel htmlFor="experienceLevel" color="gray.600">
+          Experience Level
+        </FormLabel>
         <Select
-          background="white"
+          background="gray.50"
           name="experienceLevel"
           value={credentials.experienceLevel}
           placeholder="Select your experience level"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         >
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
@@ -206,31 +248,37 @@ const Investor = () => {
         </Select>
       </FormControl>
 
-      {/* Country */}
-      <FormControl id="country">
-        <FormLabel color="white">Country</FormLabel>
+
+      <FormControl>
+        <FormLabel htmlFor="country" color="gray.600">
+          Country
+        </FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="text"
           name="country"
           value={credentials.country}
           placeholder="Enter your country"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
-      {/* Submit Button */}
+
       <Button
-        colorScheme="blue"
+        colorScheme="purple"
         width="100%"
         mt={4}
         onClick={submitHandler}
         isLoading={loading}
+        borderRadius="full"
       >
-        Sign Up
+        Register
       </Button>
     </Stack>
+
   );
 };
+
 
 export default Investor;

@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 const FundingRequests = () => {
   const [fundingRequests, setFundingRequests] = useState([]);
+  
+  const [showCounterForm, setShowCounterForm] = useState(false);
+  const [currentRequestId, setCurrentRequestId] = useState(null);
+  const investor = JSON.parse(localStorage.getItem('userInfo'))
+  console.log(investor._id)
   const [counterData, setCounterData] = useState({
     counterAmount: '',
     counterEquity: '',
-    investor_id: '',
+    investor_id: investor._id,
   });
-  const [showCounterForm, setShowCounterForm] = useState(false);
-  const [currentRequestId, setCurrentRequestId] = useState(null);
 
   useEffect(() => {
     fetchFundingRequests();
@@ -31,7 +34,7 @@ const FundingRequests = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ status: 'active' }),
+        body: JSON.stringify({ status: 'accepted', investor_id: investor._id }),
       });
 
       if (response.ok) {
@@ -41,19 +44,19 @@ const FundingRequests = () => {
         );
 
         // Post data to Investment schema
-        await fetch('http://localhost:5000/api/user/investments', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            investor_id: request.investor_id,
-            startupName: request.startup_id,
-            amount: request.requestedAmount,
-            investmentDate: new Date(),
-            equityPercentage: request.proposedEquity,
-          }),
-        });
+        // await fetch('http://localhost:5000/api/user/investments', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({
+        //     investor_id: request.investor_id,
+        //     startupName: request.startup_id,
+        //     amount: request.requestedAmount,
+        //     investmentDate: new Date(),
+        //     equityPercentage: request.proposedEquity,
+        //   }),
+        // });
       } else {
         console.error('Failed to accept request');
       }
@@ -120,12 +123,16 @@ const FundingRequests = () => {
           </tr>
         </thead>
         <tbody>
+          {console.log(fundingRequests)}
           {fundingRequests.map((request, index) => (
             <tr key={index}>
-              <td className="py-2 px-4 border-b">{request.startup_id?.startupName}</td>
+              {console.log(request.startup_id.
+startup_name
+)}
+              <td className="py-2 px-4 border-b">{request.startup_id.startup_name}</td>
               <td className="py-2 px-4 border-b">{request.requestedAmount}</td>
               <td className="py-2 px-4 border-b">{request.proposedEquity}</td>
-              <td className="py-2 px-4 border-b">{new Date(request.created_at).toLocaleDateString()}</td>
+              <td className="py-2 px-4 border-b">{request.createdAt}</td>
               <td className="py-2 px-4 border-b">{request.status}</td>
               <td className="py-2 px-4 border-b">
                 <button
@@ -172,7 +179,7 @@ const FundingRequests = () => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block text-sm font-medium mb-1">Investor ID</label>
               <input
                 type="text"
@@ -182,7 +189,7 @@ const FundingRequests = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
                 required
               />
-            </div>
+            </div> */}
             <button
               type="submit"
               className="px-4 py-2 text-white bg-blue-500 rounded-md"

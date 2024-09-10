@@ -4,7 +4,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   Stack,
   useToast,
@@ -13,11 +12,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const StartUp = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+
 
   const [credentials, setCredentials] = useState({
     userType: "Startup",
@@ -35,15 +36,15 @@ const StartUp = () => {
     confirmPassword: "",
   });
 
+
   const handleCredentials = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
 
-    
-
   const submitHandler = async () => {
     setLoading(true);
+
 
     if (
       !credentials.startup_name ||
@@ -64,6 +65,7 @@ const StartUp = () => {
       });
     }
 
+
     if (credentials.password !== credentials.confirmPassword) {
       setLoading(false);
       return toast({
@@ -76,6 +78,7 @@ const StartUp = () => {
       });
     }
 
+
     try {
       const response = await fetch("http://localhost:5000/api/user/startup", {
         method: "POST",
@@ -85,13 +88,14 @@ const StartUp = () => {
         body: JSON.stringify(credentials),
       });
 
+
       const data = await response.json();
-      
+
 
       if (data) {
         localStorage.setItem("userInfo", JSON.stringify(data));
         toast({
-          title: "startup created successfully",
+          title: "Startup created successfully",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -117,59 +121,69 @@ const StartUp = () => {
     }
   };
 
+
   return (
-    <Stack spacing="6">
+    <Stack spacing="6" p="4" bg="white" borderRadius="lg" boxShadow="lg">
       <FormControl isRequired id="startup_name">
-        <FormLabel color="white">Startup Name</FormLabel>
+        <FormLabel color="gray.600">Startup Name</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           name="startup_name"
           value={credentials.startup_name}
           onChange={handleCredentials}
           placeholder="Enter your startup name"
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl isRequired id="founder_name">
-        <FormLabel color="white">Founder Name</FormLabel>
+        <FormLabel color="gray.600">Founder Name</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           name="founder_name"
           value={credentials.founder_name}
           onChange={handleCredentials}
           placeholder="Enter the founder's name"
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl isRequired id="industry_sector">
-        <FormLabel color="white">Industry Sector</FormLabel>
+        <FormLabel color="gray.600">Industry Sector</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           name="industry_sector"
           value={credentials.industry_sector}
           onChange={handleCredentials}
           placeholder="Enter your industry sector"
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl id="description">
-        <FormLabel color="white">Description</FormLabel>
+        <FormLabel color="gray.600">Description</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           name="description"
           value={credentials.description}
           onChange={handleCredentials}
           placeholder="Enter a brief description"
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl isRequired id="business_stage">
-        <FormLabel color="white">Business Stage</FormLabel>
+        <FormLabel color="gray.600">Business Stage</FormLabel>
         <Select
-          background="white"
+          background="gray.50"
           name="business_stage"
           value={credentials.business_stage}
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
           placeholder="Select business stage"
         >
           <option value="Idea">Idea</option>
@@ -178,67 +192,86 @@ const StartUp = () => {
         </Select>
       </FormControl>
 
+
       <FormControl id="incorporation_date">
-        <FormLabel color="white">Incorporation Date</FormLabel>
+        <FormLabel color="gray.600">Incorporation Date</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="date"
           name="incorporation_date"
           value={credentials.incorporation_date}
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl id="employees_count">
-        <FormLabel color="white">Employees Count</FormLabel>
+        <FormLabel color="gray.600">Employees Count</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           type="number"
           name="employees_count"
           value={credentials.employees_count}
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl id="website_url">
-        <FormLabel color="white">Website URL</FormLabel>
+        <FormLabel color="gray.600">Website URL</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           name="website_url"
           value={credentials.website_url}
           onChange={handleCredentials}
           placeholder="Enter your website URL"
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
 
+
       <FormControl id="pitch_deck_url">
-        <FormLabel color="white">Pitch Deck (Upload URL)</FormLabel>
+        <FormLabel color="gray.600">Pitch Deck (Upload URL)</FormLabel>
         <Input
-          background="white"
+          background="gray.50"
           value={credentials.pitch_deck_url}
           name="pitch_deck_url"
           placeholder="Enter your Pitch deck URL"
           onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
         />
       </FormControl>
-        <FormControl isRequired id="email">
-          <FormLabel htmlFor="email" color="white">
-            Email
-          </FormLabel>
-          <Input
-            background="white"
-            type="email"
-            name="email"
-            value={credentials.email}
-            placeholder="Enter Your Email"
-            onChange={(e) => handleCredentials(e)}
-          />
-        </FormControl>
+
+
+      <FormControl isRequired id="email">
+        <FormLabel htmlFor="email" color="gray.600">
+          Email
+        </FormLabel>
+        <Input
+          background="gray.50"
+          type="email"
+          name="email"
+          value={credentials.email}
+          placeholder="Enter Your Email"
+          onChange={handleCredentials}
+          focusBorderColor="#6f42c1"
+        />
+      </FormControl>
+
+
       <FormControl isRequired id="password">
-        <FormLabel color="white">Password</FormLabel>
-        <InputGroup background="white">
-          <InputRightElement>
-            <Button size="sm" onClick={() => setShow(!show)}>
+        <FormLabel color="gray.600">Password</FormLabel>
+        <InputGroup background="gray.50">
+          <InputRightElement w="4.5rem">
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -248,15 +281,23 @@ const StartUp = () => {
             value={credentials.password}
             onChange={handleCredentials}
             placeholder="Password"
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
 
+
       <FormControl isRequired id="confirmPassword">
-        <FormLabel color="white">Confirm Password</FormLabel>
-        <InputGroup background="white">
-          <InputRightElement>
-            <Button size="sm" onClick={() => setShow(!show)}>
+        <FormLabel color="gray.600">Confirm Password</FormLabel>
+        <InputGroup background="gray.50">
+          <InputRightElement w="4.5rem">
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={() => setShow(!show)}
+              variant="ghost"
+              colorScheme="purple"
+            >
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
@@ -266,21 +307,26 @@ const StartUp = () => {
             value={credentials.confirmPassword}
             onChange={handleCredentials}
             placeholder="Confirm Password"
+            focusBorderColor="#6f42c1"
           />
         </InputGroup>
       </FormControl>
 
+
       <Button
-        colorScheme="blue"
+        colorScheme="purple"
         width="100%"
         mt={4}
         onClick={submitHandler}
         isLoading={loading}
+        borderRadius="full"
       >
         Sign Up
       </Button>
     </Stack>
+
   );
 };
+
 
 export default StartUp;

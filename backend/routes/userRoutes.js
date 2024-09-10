@@ -1,11 +1,11 @@
 const express = require("express");
-const { createStartup,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,updateFundingRequest,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus,createInvestment,acceptFundingRequest,counterFundingRequest } = require("../controllers");
+const { createStartup,getStartups,updateStartup,signupResearcher,signupGovtAgency,authUser, allUsers,createFundingRequest,getFundingRequest,getFundingRequests,updateFundingRequest,createMentorshipRequest,getMentorshipRequests,createCollaborationRequest,getCollaborationRequests,createResearchProject, registerInvestor,getInvestorByUserId,getResearcherByUserId,getStartupByUserId,createPatent,getPatents,createTrademark,getTrademarks,getTrademarkById,updatePatentStatus,createInvestment,acceptFundingRequest,counterFundingRequest,getAllInvestmentsByInvestorId } = require("../controllers");
 const { protect } = require("../middleware");
 const { getResearchProjects } = require("../controllers/researchProjectController");
 
 const router = express.Router();
 
-router.route("/startup").post(createStartup).get(protect, allUsers);
+router.route("/startup").post(createStartup).get(getStartups);
 router.route("/startup/:id").put(updateStartup);
 router.route("/funding-requests").post(createFundingRequest).get( getFundingRequests);
 router.route("/funding-requests/:startupId").get( getFundingRequest);
@@ -25,8 +25,9 @@ router.route("/researcher/:userId").get(getResearcherByUserId);
 router.route("/startup/:userId").get(getStartupByUserId);
 router.route("/patents").post(createPatent).get(getPatents);
 router.route("/investments").post(createInvestment);
-router.route("funding-requests/:id/counter").put(counterFundingRequest);
-router.route("funding-requests/:id/accept").put(acceptFundingRequest);
+router.route("/investments/:investor_id").get(getAllInvestmentsByInvestorId);
+router.route("/funding-requests/:id/counter").put(counterFundingRequest);
+router.route("/funding-requests/:id/accept").put(acceptFundingRequest);
 router.route("/trademarks").post(createTrademark).get(getTrademarks);
 const iprManagerController = require('../controllers/iprManagerController'); // Adjust the path according to your project structure
 

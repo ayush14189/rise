@@ -3,7 +3,6 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import img1 from "../../assets/c1.png";
 import img2 from "../../assets/c2.png";
-import img3 from "../../assets/c3.png";
 import styled from "styled-components";
 
 export default function MyCarousel() {
@@ -71,9 +70,6 @@ export default function MyCarousel() {
             </div>
             <div>
               <img src={img1} alt="Slide 2" style={{ width: "100%" }} />
-            </div>
-            <div>
-              <img src={img3} alt="Slide 3" style={{ width: "100%" }} />
             </div>
           </Carousel>
         </div>

@@ -57,7 +57,6 @@ export default function Landing() {
       <Carousel/>
       {/* <Header /> */}
       <Features />
-      <Eligibility />
       {/* <Projects />
       <Blog /> */}
       <Contact />
