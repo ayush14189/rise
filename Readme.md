@@ -20,9 +20,9 @@ This README provides an overview of the project, including team details, relevan
 ## Project Links
 
 - *Final SIH Presentation:* [Final SIH Presentation](https://github.com/Krishsh93/sih/blob/main/Team_RISE_MAIN_SIH.pdf)
-- *Video Demonstration:* [Watch Video]()
+- *Video Demonstration:* [Watch Video](https://youtu.be/hditSaAN_jo)
 - *Live Deployment:* [Deploy]()We will deploy it shortly
-- *Source Code:* [GitHub Repository]()
+- *Source Code:* [GitHub Repository](https://github.com/Krishsh93/sih)
 - *Additional Resources:* [Other Relevant Links]()
 ## Installation and Setup
 
