@@ -44,7 +44,7 @@ This README provides an overview of the project, including team details, relevan
    
 ### 3. *Install Server Dependencies*
 
-- Navigate to the backend (or server) directory and run:
+   Navigate to the backend (or server) directory and run:
 
    ```bash
    cd backend
